@@ -37,7 +37,6 @@
             flex-direction: column;
         }
         
-        /* Navigation */
         .nav-header {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -49,7 +48,7 @@
         
         .nav-menu {
             display: flex;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
             justify-content: center;
             align-items: center;
@@ -60,11 +59,11 @@
             border: none;
             color: #555;
             cursor: pointer;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
+            padding: 0.7rem 1.5rem;
+            font-size: 1rem;
             font-weight: 600;
             transition: all 0.3s;
-            border-radius: 5px;
+            border-radius: 8px;
             font-family: 'Mulish', sans-serif;
         }
         
@@ -79,7 +78,6 @@
             color: white;
         }
         
-        /* Progress Bar */
         .progress-bar {
             height: 4px;
             background: #ddd;
@@ -93,7 +91,6 @@
             transition: width 0.5s ease;
         }
         
-        /* Content Area */
         .content {
             flex: 1;
             padding: 3rem 2rem;
@@ -108,24 +105,24 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Page Styles */
         .page-title {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
             background: linear-gradient(135deg, var(--orange), var(--rose));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-align: center;
         }
         
         .page-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: #666;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
         }
         
-        /* Cards */
         .card {
             background: white;
             border-radius: 12px;
@@ -140,7 +137,6 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
         
-        /* Buttons */
         .btn {
             padding: 1rem 2rem;
             border: none;
@@ -173,24 +169,23 @@
             transform: scale(1.05);
         }
         
-        /* Grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
         
-        /* Axes */
         .axe-card {
             background: white;
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 2rem;
             cursor: pointer;
             transition: all 0.3s;
-            border-left: 5px solid;
+            border-left: 6px solid;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
         }
         
         .axe-card::before {
@@ -198,43 +193,42 @@
             position: absolute;
             top: 0;
             right: 0;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: currentColor;
-            opacity: 0.1;
+            opacity: 0.08;
             border-radius: 0 12px 0 100%;
         }
         
         .axe-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
         
         .axe-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
         }
         
         .axe-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
         
         .axe-desc {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #666;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         
-        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -246,8 +240,8 @@
         .modal-content {
             background: white;
             border-radius: 16px;
-            padding: 2.5rem;
-            max-width: 700px;
+            padding: 3rem;
+            max-width: 800px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
@@ -268,14 +262,15 @@
             color: white;
             border: none;
             border-radius: 50%;
-            width: 35px;
-            height: 35px;
-            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            font-size: 1.8rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s;
+            line-height: 1;
         }
         
         .modal-close:hover {
@@ -283,7 +278,6 @@
             background: #b00942;
         }
         
-        /* Comparison Table */
         .comparison-table {
             background: white;
             border-radius: 12px;
@@ -312,6 +306,7 @@
             font-weight: 700;
             background: var(--bleu);
             color: white;
+            font-size: 1.1rem;
         }
         
         .comparison-header:nth-child(2) {
@@ -322,13 +317,12 @@
             background: var(--orange);
         }
         
-        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             background: linear-gradient(135deg, var(--bleu) 0%, var(--orange) 100%);
             color: white;
-            border-radius: 16px;
+            border-radius: 20px;
             margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
@@ -356,13 +350,13 @@
         }
         
         .hero-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
         }
         
         .hero-subtitle {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             margin-bottom: 2rem;
             opacity: 0.95;
         }
@@ -370,13 +364,13 @@
         .hero-icons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 2.5rem;
+            margin: 2.5rem 0;
             flex-wrap: wrap;
         }
         
         .hero-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             opacity: 0.9;
             animation: float 3s ease-in-out infinite;
         }
@@ -387,75 +381,16 @@
         
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
         
         .hero-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
         
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-        
-        .timeline-item {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-        }
-        
-        .timeline-year {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--bleu);
-            min-width: 100px;
-        }
-        
-        .timeline-content {
-            flex: 1;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-left: 4px solid var(--orange);
-        }
-        
-        /* Map */
-        .map-container {
-            background: white;
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        
-        .map-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .zone-card {
-            background: linear-gradient(135deg, var(--gris) 0%, white 100%);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border-left: 5px solid;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .zone-card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-        
-        /* List Styles */
         ul {
             list-style: none;
             padding: 0;
@@ -465,6 +400,7 @@
             padding: 0.8rem 0;
             padding-left: 2rem;
             position: relative;
+            line-height: 1.6;
         }
         
         li::before {
@@ -473,37 +409,86 @@
             left: 0;
             color: var(--orange);
             font-weight: 700;
+            font-size: 1.2rem;
         }
         
-        /* Responsive */
+        .ressource-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-top: 4px solid var(--bleu);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .ressource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+        
+        .ressource-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .ressource-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--bleu);
+            margin-bottom: 1rem;
+        }
+        
+        .ressource-desc {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .ressource-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ressource-type {
+            background: var(--gris);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+        }
+        
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
             
             .page-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .comparison-row {
                 grid-template-columns: 1fr;
             }
             
-            .map-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .nav-menu {
-                gap: 0.5rem;
+                gap: 0.8rem;
             }
             
             .nav-btn {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -511,7 +496,7 @@
             background: #333;
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-top: 4rem;
         }
         
@@ -520,14 +505,15 @@
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
         
         .logo-item {
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.2rem;
             background: rgba(255,255,255,0.1);
             border-radius: 8px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -537,16 +523,13 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        const App = () => {
+        function App() {
             const [currentPage, setCurrentPage] = useState('accueil');
             const [showModal, setShowModal] = useState(false);
             const [modalContent, setModalContent] = useState(null);
             const [progress, setProgress] = useState(0);
 
-            const pages = [
-                'accueil', 'miroir', 'axes', 'carte', 'lab', 
-                'atelier', 'impact', 'timeline', 'ressources', 'contact'
-            ];
+            const pages = ['accueil', 'axes', 'miroir', 'ressources'];
 
             useEffect(() => {
                 const index = pages.indexOf(currentPage);
@@ -558,7 +541,7 @@
                     id: 1,
                     title: "Accompagner dans la durée",
                     icon: "⏱️",
-                    color: "var(--orange)",
+                    color: "#f39200",
                     accroche: "Donner du temps, du sens et des espaces d'évolution aux jeunes",
                     objectifs: [
                         "Réaliser un diagnostic global et itératif fondé sur les besoins réels du jeune",
@@ -566,59 +549,59 @@
                         "Ancrer l'accompagnement dans la durée : suivi post-parcours, lien continu",
                         "Évaluer la progression par les capabilités : autonomie, confiance, pouvoir d'agir"
                     ],
-                    outils: ["Grille Life & Mobility Skills (LS4YOU) enrichie du diagnostic territorial", "Portfolio numérique évolutif Mahara / LMS MLPB"],
-                    exemple: "Parcours Baserriberri : suivi long et formation en situation • Je me déplace : mobilité durable et autonomie territoriale"
+                    outils: ["Grille Life & Mobility Skills (LS4YOU)", "Portfolio numérique Mahara / LMS MLPB"],
+                    exemple: "Baserriberri : suivi long et formation • Je me déplace : mobilité durable"
                 },
                 {
                     id: 2,
                     title: "Posture relationnelle",
                     icon: "💬",
-                    color: "var(--rose)",
-                    accroche: "Construire une relation d'accompagnement fondée sur la confiance et la co-construction",
+                    color: "#d60b52",
+                    accroche: "Construire une relation fondée sur la confiance et la co-construction",
                     objectifs: [
                         "Développer l'écoute active et la compréhension systémique des situations",
                         "Intégrer les émotions et la santé mentale dans l'analyse de parcours",
                         "Co-concevoir les solutions avec les jeunes et les partenaires",
                         "Cultiver l'attitude réflexive et la coopération plutôt que la prescription"
                     ],
-                    outils: ["Méthode des capabilités : autonomie et droit d'expérimenter", "Modules Physical & Mental Fitness (LS4YOU)"],
-                    exemple: "Ateliers 'Parole Jeune' (co-décision CEP / CEJ) • Espaces réflexifs entre pairs conseillers : regard croisé sur les pratiques"
+                    outils: ["Méthode des capabilités", "Modules Physical & Mental Fitness (LS4YOU)"],
+                    exemple: "Ateliers 'Parole Jeune' • Espaces réflexifs entre pairs conseillers"
                 },
                 {
                     id: 3,
                     title: "Compétences hybrides",
                     icon: "🎓",
-                    color: "var(--vert)",
+                    color: "#95c11f",
                     accroche: "Développer les compétences techniques, sociales et environnementales",
                     objectifs: [
                         "Relier hard, soft, life et green skills",
                         "Intégrer les dimensions linguistiques et interculturelles",
                         "Valoriser les apprentissages informels et expérientiels",
-                        "Promouvoir la reconnaissance ouverte (open badges, micro-certifications)"
+                        "Promouvoir la reconnaissance ouverte (badges, micro-certifications)"
                     ],
-                    outils: ["Badges LS4YOU / PIX / CléA / Green Guidance", "Ressources numériques : MOOCs, podcasts, vidéos interactives"],
-                    exemple: "Take Off Pro : mobilité internationale et compétences linguistiques • PAVAMI 2.0 : parcours de formation mixte conseillers/jeunes"
+                    outils: ["Badges LS4YOU / PIX / CléA", "MOOCs, podcasts, vidéos interactives"],
+                    exemple: "Take Off Pro : mobilité internationale • PAVAMI 2.0 : formation mixte"
                 },
                 {
                     id: 4,
                     title: "Humain + Digital",
                     icon: "💻",
-                    color: "var(--bleu)",
-                    accroche: "Faire du numérique un levier d'autonomie, non un substitut à la relation",
+                    color: "#2897d5",
+                    accroche: "Faire du numérique un levier d'autonomie, non un substitut",
                     objectifs: [
                         "Hybrider accompagnement présentiel et digital : LMS, VR, IA éthique",
                         "Renforcer l'inclusion numérique et la citoyenneté digitale",
                         "Intégrer l'expérimentation IA et outils immersifs",
                         "Créer des environnements d'apprentissage ouverts et collaboratifs"
                     ],
-                    outils: ["Plateforme Roaming FSE+ (réalité virtuelle, IA de matching)", "Fablabs et tiers-lieux numériques territoriaux"],
-                    exemple: "Simulations métiers en VR Baserriberri • Podcast 'Jeunes en mouvement' (Roaming + Take Off Pro)"
+                    outils: ["Plateforme Roaming FSE+ (VR, IA)", "Fablabs et tiers-lieux numériques"],
+                    exemple: "Simulations métiers VR Baserriberri • Podcast 'Jeunes en mouvement'"
                 },
                 {
                     id: 5,
                     title: "Droit à l'expérimentation",
                     icon: "🧪",
-                    color: "var(--orange)",
+                    color: "#f39200",
                     accroche: "Tester, innover, apprendre par la pratique",
                     objectifs: [
                         "Instaurer le droit à l'essai et à l'erreur",
@@ -626,14 +609,14 @@
                         "Favoriser la coopération intergénérationnelle et interculturelle",
                         "Relier les projets aux enjeux citoyens et environnementaux"
                     ],
-                    outils: ["Micro-projets territoriaux et Labs d'expérimentation", "Approche learning by doing et accompagnement par les pairs"],
-                    exemple: "Lab Baserriberri : chantier école et innovation métier • Ambassadeurs Jeunes : projets citoyens participatifs"
+                    outils: ["Micro-projets territoriaux", "Learning by doing et accompagnement pairs"],
+                    exemple: "Lab Baserriberri : chantier école • Ambassadeurs Jeunes citoyens"
                 },
                 {
                     id: 6,
                     title: "Territoire apprenant",
                     icon: "🌐",
-                    color: "var(--vert)",
+                    color: "#95c11f",
                     accroche: "Relier acteurs, espaces et projets pour un territoire formateur",
                     objectifs: [
                         "Développer l'expertise jeunesse et la veille territoriale",
@@ -641,68 +624,68 @@
                         "Favoriser le croisement des disciplines et des compétences",
                         "Consolider l'ancrage territorial des dispositifs"
                     ],
-                    outils: ["Observatoire du Territoire MLPB 2.0", "Plateformes coopératives (Miro / Basecamp / Lanean)"],
-                    exemple: "Lanean POCTEFA : coopération emploi-formation France/Espagne • Comité Jeunes Territoire : veille participative locale"
+                    outils: ["Observatoire du Territoire MLPB 2.0", "Plateformes Miro / Basecamp / Lanean"],
+                    exemple: "Lanean POCTEFA France/Espagne • Comité Jeunes Territoire"
                 },
                 {
                     id: 7,
                     title: "Évaluation qualitative & Communication",
                     icon: "📊",
-                    color: "var(--bleu)",
-                    accroche: "Valoriser, communiquer, évaluer : faire de la donnée un outil d'apprentissage collectif",
+                    color: "#2897d5",
+                    accroche: "Faire de la donnée un outil d'apprentissage collectif",
                     objectifs: [
                         "Développer des outils d'évaluation continue et participative",
                         "Associer les jeunes à la promotion et à l'analyse des projets",
                         "Diffuser une communication modernisée et partagée",
                         "Articuler évaluation, valorisation et communication stratégique"
                     ],
-                    outils: ["Tableau de bord d'impact CEP 2.0 / Sphinx / Observatoire territorial", "Stratégie de communication participative MLPB 2.0"],
-                    exemple: "Campagne #jerichocampaign : communication engageante • Baromètre Jeunes Territoire : co-évaluation annuelle"
+                    outils: ["Tableau de bord CEP 2.0 / Sphinx", "Stratégie communication MLPB 2.0"],
+                    exemple: "Campagne #jerichocampaign • Baromètre Jeunes Territoire"
                 },
                 {
                     id: 8,
                     title: "Professionnalisation par les capabilités",
-                    icon: "🧑‍🏫",
-                    color: "var(--rose)",
-                    accroche: "Donner aux professionnels les moyens réels d'agir, d'innover et de coopérer",
+                    icon: "👨‍💼",
+                    color: "#d60b52",
+                    accroche: "Donner aux professionnels les moyens réels d'agir",
                     objectifs: [
                         "Professionnaliser par la capabilité, non uniquement par les compétences",
                         "Favoriser l'autonomie, la réflexivité et le pouvoir d'initiative",
-                        "Développer l'apprentissage en situation : co-développement, feedbacks, cycles courts",
+                        "Développer l'apprentissage en situation : co-développement, feedbacks",
                         "Créer des espaces d'analyse de pratique et de partage entre pairs"
                     ],
-                    outils: ["Référentiel de professionnalisation par les capabilités", "Catalogue modulaire PAVAMI 2.0 : ADVP, soft skills, santé mentale, IA, international"],
-                    exemple: "Webinaires internes 'Regards croisés' • Formation CIBC + Roaming : posture CEP augmentée"
+                    outils: ["Référentiel de professionnalisation", "Catalogue PAVAMI 2.0 : ADVP, soft skills, IA"],
+                    exemple: "Webinaires 'Regards croisés' • Formation CIBC + Roaming"
                 },
                 {
                     id: 9,
                     title: "Innovation continue",
                     icon: "🚀",
-                    color: "var(--orange)",
-                    accroche: "Faire de la Mission Locale un laboratoire d'innovation sociale et pédagogique",
+                    color: "#f39200",
+                    accroche: "Faire de la Mission Locale un laboratoire d'innovation",
                     objectifs: [
                         "Observer, expérimenter, ajuster : culture du test & learn",
                         "Développer les projets hybrides et transversaux",
                         "Intégrer l'éco-responsabilité dans l'orientation et les pratiques",
                         "Croiser citoyenneté, santé mentale, mobilité, numérique"
                     ],
-                    outils: ["Lab CEP 2.0 : plateforme d'innovation interne", "Hackathons, serious games, ateliers UX participatifs"],
-                    exemple: "Serious Game Pro (forums emploi) • Green Guidance : orientation éco-responsable"
+                    outils: ["Lab CEP 2.0", "Hackathons, serious games, ateliers UX"],
+                    exemple: "Serious Game Pro forums emploi • Green Guidance éco-responsable"
                 },
                 {
                     id: 10,
                     title: "Déclinaison locale et ancrage territorial",
                     icon: "🗺️",
-                    color: "var(--vert)",
-                    accroche: "Adapter le CEP 2.0 aux contextes de vie et aux dynamiques locales",
+                    color: "#95c11f",
+                    accroche: "Adapter le CEP 2.0 aux contextes de vie locaux",
                     objectifs: [
                         "Territorialiser les dispositifs selon les besoins locaux",
                         "Soutenir la participation citoyenne et les initiatives locales",
                         "Articuler inter-territorial, transfrontalier et international",
                         "Développer une culture d'ajustement et d'adaptabilité permanente"
                     ],
-                    outils: ["CEP Local Canvas : diagnostic territorial et plan d'action", "Cartographie participative et veille jeunesse locale"],
-                    exemple: "CEP Ruralité : mobilité solidaire, emploi agricole, numérique rural • CEP Transfrontalier Lanean : mobilité Espagne / France"
+                    outils: ["CEP Local Canvas", "Cartographie participative et veille jeunesse"],
+                    exemple: "CEP Ruralité : mobilité, emploi agricole • CEP Transfrontalier Lanean"
                 }
             ];
 
@@ -719,27 +702,15 @@
             const renderPage = () => {
                 switch(currentPage) {
                     case 'accueil':
-                        return <AccueilPage setPage={setCurrentPage} />;
-                    case 'miroir':
-                        return <MiroirPage />;
+                        return React.createElement(AccueilPage, { setPage: setCurrentPage });
                     case 'axes':
-                        return <AxesPage axes={axes} openModal={openModal} />;
-                    case 'carte':
-                        return <CartePage />;
-                    case 'lab':
-                        return <LabPage />;
-                    case 'atelier':
-                        return <AtelierPage />;
-                    case 'impact':
-                        return <ImpactPage />;
-                    case 'timeline':
-                        return <TimelinePage />;
+                        return React.createElement(AxesPage, { axes: axes, openModal: openModal });
+                    case 'miroir':
+                        return React.createElement(MiroirPage, null);
                     case 'ressources':
-                        return <RessourcesPage />;
-                    case 'contact':
-                        return <ContactPage />;
+                        return React.createElement(RessourcesPage, null);
                     default:
-                        return <AccueilPage setPage={setCurrentPage} />;
+                        return React.createElement(AccueilPage, { setPage: setCurrentPage });
                 }
             };
 
@@ -747,16 +718,18 @@
                 <div className="container">
                     <nav className="nav-header">
                         <div className="nav-menu">
-                            <button className={`nav-btn ${currentPage === 'accueil' ? 'active' : ''}`} onClick={() => setCurrentPage('accueil')}>🏠 Accueil</button>
-                            <button className={`nav-btn ${currentPage === 'miroir' ? 'active' : ''}`} onClick={() => setCurrentPage('miroir')}>🔄 Miroir CEP</button>
-                            <button className={`nav-btn ${currentPage === 'axes' ? 'active' : ''}`} onClick={() => setCurrentPage('axes')}>⚙️ 10 Axes</button>
-                            <button className={`nav-btn ${currentPage === 'carte' ? 'active' : ''}`} onClick={() => setCurrentPage('carte')}>🗺️ Carte</button>
-                            <button className={`nav-btn ${currentPage === 'lab' ? 'active' : ''}`} onClick={() => setCurrentPage('lab')}>🔬 Lab</button>
-                            <button className={`nav-btn ${currentPage === 'atelier' ? 'active' : ''}`} onClick={() => setCurrentPage('atelier')}>🎨 Atelier</button>
-                            <button className={`nav-btn ${currentPage === 'impact' ? 'active' : ''}`} onClick={() => setCurrentPage('impact')}>📊 Impact</button>
-                            <button className={`nav-btn ${currentPage === 'timeline' ? 'active' : ''}`} onClick={() => setCurrentPage('timeline')}>📅 Timeline</button>
-                            <button className={`nav-btn ${currentPage === 'ressources' ? 'active' : ''}`} onClick={() => setCurrentPage('ressources')}>📚 Ressources</button>
-                            <button className={`nav-btn ${currentPage === 'contact' ? 'active' : ''}`} onClick={() => setCurrentPage('contact')}>📧 Contact</button>
+                            <button className={`nav-btn ${currentPage === 'accueil' ? 'active' : ''}`} onClick={() => setCurrentPage('accueil')}>
+                                🏠 Accueil
+                            </button>
+                            <button className={`nav-btn ${currentPage === 'axes' ? 'active' : ''}`} onClick={() => setCurrentPage('axes')}>
+                                ⚙️ Les 10 Axes
+                            </button>
+                            <button className={`nav-btn ${currentPage === 'miroir' ? 'active' : ''}`} onClick={() => setCurrentPage('miroir')}>
+                                🔄 Miroir CEP
+                            </button>
+                            <button className={`nav-btn ${currentPage === 'ressources' ? 'active' : ''}`} onClick={() => setCurrentPage('ressources')}>
+                                📚 Ressources
+                            </button>
                         </div>
                     </nav>
                     
@@ -772,21 +745,21 @@
                         <div className="modal-overlay" onClick={closeModal}>
                             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                                 <button className="modal-close" onClick={closeModal}>×</button>
-                                <div style={{borderLeft: `5px solid ${modalContent.color}`, paddingLeft: '1.5rem'}}>
-                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>{modalContent.icon}</div>
-                                    <h2 style={{color: modalContent.color, marginBottom: '1rem'}}>{modalContent.title}</h2>
-                                    <p style={{fontSize: '1.2rem', fontStyle: 'italic', color: '#666', marginBottom: '1.5rem'}}>
+                                <div style={{borderLeft: `6px solid ${modalContent.color}`, paddingLeft: '2rem'}}>
+                                    <div style={{fontSize: '3.5rem', marginBottom: '1rem'}}>{modalContent.icon}</div>
+                                    <h2 style={{color: modalContent.color, marginBottom: '1rem', fontSize: '1.8rem'}}>{modalContent.title}</h2>
+                                    <p style={{fontSize: '1.3rem', fontStyle: 'italic', color: '#666', marginBottom: '2rem', lineHeight: '1.6'}}>
                                         "{modalContent.accroche}"
                                     </p>
-                                    <h3 style={{marginBottom: '1rem'}}>Objectifs :</h3>
+                                    <h3 style={{marginBottom: '1rem', color: '#333', fontSize: '1.3rem'}}>🎯 Objectifs :</h3>
                                     <ul>
                                         {modalContent.objectifs.map((obj, i) => <li key={i}>{obj}</li>)}
                                     </ul>
-                                    <h3 style={{marginTop: '1.5rem', marginBottom: '1rem'}}>Outils :</h3>
-                                    <p style={{color: '#555'}}>{modalContent.outils.join(' • ')}</p>
-                                    <div style={{background: 'var(--gris)', padding: '1rem', borderRadius: '8px', marginTop: '1.5rem'}}>
-                                        <h3 style={{marginBottom: '0.5rem'}}>Exemple MLPB :</h3>
-                                        <p style={{color: '#555'}}>{modalContent.exemple}</p>
+                                    <h3 style={{marginTop: '2rem', marginBottom: '1rem', color: '#333', fontSize: '1.3rem'}}>🧰 Outils :</h3>
+                                    <p style={{color: '#555', fontSize: '1.05rem'}}>{modalContent.outils.join(' • ')}</p>
+                                    <div style={{background: '#f4f4f4', padding: '1.5rem', borderRadius: '12px', marginTop: '2rem'}}>
+                                        <h3 style={{marginBottom: '0.8rem', color: modalContent.color, fontSize: '1.2rem'}}>💡 Exemples MLPB :</h3>
+                                        <p style={{color: '#555', fontSize: '1.05rem', lineHeight: '1.6'}}>{modalContent.exemple}</p>
                                     </div>
                                 </div>
                             </div>
@@ -794,7 +767,7 @@
                     )}
 
                     <footer className="footer">
-                        <p>© 2025 Mission Locale Pays Basque - CEP 2.0</p>
+                        <p>&copy; 2025 Mission Locale Pays Basque - CEP 2.0</p>
                         <div className="logo-container">
                             <span className="logo-item">MLPB</span>
                             <span className="logo-item">Pistes Solidaires</span>
@@ -807,131 +780,121 @@
                     </footer>
                 </div>
             );
-        };
+        }
 
-        const AccueilPage = ({ setPage }) => (
-            <div>
-                <div className="hero">
-                    <div className="hero-content">
-                        <h1 className="hero-title">Conseil en Évolution Professionnelle 2.0</h1>
-                        <p className="hero-subtitle">Modèle vivant et territorial</p>
-                        <div className="hero-icons">
-                            <span className="hero-icon">🎯</span>
-                            <span className="hero-icon">💡</span>
-                            <span className="hero-icon">🌱</span>
-                            <span className="hero-icon">🤝</span>
+        function AccueilPage({ setPage }) {
+            return (
+                <div>
+                    <div className="hero">
+                        <div className="hero-content">
+                            <h1 className="hero-title">Conseil en Évolution Professionnelle 2.0</h1>
+                            <p className="hero-subtitle">Modèle vivant et territorial</p>
+                            <div className="hero-icons">
+                                <span className="hero-icon">🎯</span>
+                                <span className="hero-icon">💡</span>
+                                <span className="hero-icon">🌱</span>
+                                <span className="hero-icon">🤝</span>
+                            </div>
+                            <p style={{fontSize: '1.3rem', maxWidth: '850px', margin: '2rem auto', lineHeight: '1.8'}}>
+                                Un modèle agile, capacitant et territorialisé pour accompagner les jeunes d'aujourd'hui
+                            </p>
+                            <div className="hero-buttons">
+                                <button className="btn btn-primary" onClick={() => setPage('axes')}>
+                                    🚀 Découvrir les 10 Axes
+                                </button>
+                                <button className="btn btn-secondary" onClick={() => setPage('miroir')}>
+                                    🔄 Comparer CEP Classique / CEP 2.0
+                                </button>
+                            </div>
                         </div>
-                        <p style={{fontSize: '1.2rem', maxWidth: '800px', margin: '2rem auto'}}>
-                            Un modèle agile, inclusif et durable pour accompagner les jeunes d'aujourd'hui
+                    </div>
+
+                    <div className="grid">
+                        <div className="card" style={{borderTop: '5px solid #f39200', cursor: 'pointer'}} onClick={() => setPage('axes')}>
+                            <h3 style={{color: '#f39200', marginBottom: '1rem', fontSize: '1.5rem'}}>⚙️ Les 10 Axes du CEP 2.0</h3>
+                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
+                                Découvrez les 10 dimensions du modèle : accompagnement dans la durée, posture relationnelle, 
+                                compétences hybrides, humain + digital, droit à l'expérimentation et plus encore.
+                            </p>
+                        </div>
+                        <div className="card" style={{borderTop: '5px solid #2897d5', cursor: 'pointer'}} onClick={() => setPage('miroir')}>
+                            <h3 style={{color: '#2897d5', marginBottom: '1rem', fontSize: '1.5rem'}}>🔄 Miroir CEP</h3>
+                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
+                                Comparez le CEP classique et le CEP 2.0 : finalité, posture, temporalité, outils, 
+                                évaluation et gouvernance. Comprenez l'évolution du modèle.
+                            </p>
+                        </div>
+                        <div className="card" style={{borderTop: '5px solid #95c11f', cursor: 'pointer'}} onClick={() => setPage('ressources')}>
+                            <h3 style={{color: '#95c11f', marginBottom: '1rem', fontSize: '1.5rem'}}>📚 Ressources Téléchargeables</h3>
+                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
+                                Accédez aux documents de référence, guides pratiques, outils d'évaluation et 
+                                supports de formation pour mettre en œuvre le CEP 2.0.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="card" style={{background: 'linear-gradient(135deg, #f4f4f4 0%, white 100%)', marginTop: '3rem'}}>
+                        <h2 style={{color: '#f39200', marginBottom: '1.5rem', fontSize: '2rem'}}>Le CEP 2.0 : un modèle vivant</h2>
+                        <p style={{fontSize: '1.15rem', lineHeight: '1.9', marginBottom: '1.5rem'}}>
+                            Le Conseil en Évolution Professionnelle 2.0 représente une transformation profonde de l'accompagnement des jeunes. 
+                            Il ne s'agit plus seulement d'orienter vers l'emploi ou la formation, mais d'accompagner une véritable transformation 
+                            de parcours de vie.
                         </p>
-                        <div className="hero-buttons">
-                            <button className="btn btn-primary" onClick={() => setPage('axes')}>
-                                🚀 Entrer dans le modèle CEP 2.0
-                            </button>
-                            <button className="btn btn-secondary" onClick={() => setPage('miroir')}>
-                                🔄 Comparer CEP classique / CEP 2.0
-                            </button>
-                        </div>
+                        <p style={{fontSize: '1.15rem', lineHeight: '1.9'}}>
+                            Ce modèle vivant et territorial s'appuie sur <strong>10 axes complémentaires</strong>, alliant innovation numérique, 
+                            évaluation qualitative, territoire apprenant et droit à l'expérimentation. Il place le jeune au centre 
+                            comme acteur de son parcours, avec des conseillers qui deviennent facilitateurs et designers de parcours.
+                        </p>
                     </div>
                 </div>
+            );
+        }
 
-                <div className="grid">
-                    <div className="card" style={{borderTop: '4px solid var(--orange)', cursor: 'pointer'}} onClick={() => setPage('axes')}>
-                        <h3 style={{color: 'var(--orange)', marginBottom: '1rem', fontSize: '1.4rem'}}>🎯 Explorer les 10 axes</h3>
-                        <p>Découvrez les 10 dimensions du modèle CEP 2.0 : de l'accompagnement dans la durée à la déclinaison locale.</p>
+        function AxesPage({ axes, openModal }) {
+            return (
+                <div>
+                    <h1 className="page-title">⚙️ Les 10 Axes du CEP 2.0</h1>
+                    <p className="page-subtitle">Cliquez sur chaque axe pour découvrir les détails</p>
+
+                    <div className="grid">
+                        {axes.map((axe) => (
+                            <div 
+                                key={axe.id} 
+                                className="axe-card" 
+                                style={{borderLeftColor: axe.color, color: axe.color}}
+                                onClick={() => openModal(axe)}
+                            >
+                                <div className="axe-icon">{axe.icon}</div>
+                                <div className="axe-title">{axe.title}</div>
+                                <div className="axe-desc" style={{color: '#666'}}>
+                                    {axe.accroche}
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                    <div className="card" style={{borderTop: '4px solid var(--vert)', cursor: 'pointer'}} onClick={() => setPage('carte')}>
-                        <h3 style={{color: 'var(--vert)', marginBottom: '1rem', fontSize: '1.4rem'}}>🗺️ Carte des déclinaisons locales</h3>
-                        <p>Explorez comment le CEP 2.0 s'adapte aux 4 zones du Pays Basque : littoral, intérieur, montagne, transfrontalier.</p>
-                    </div>
-                    <div className="card" style={{borderTop: '4px solid var(--bleu)', cursor: 'pointer'}} onClick={() => setPage('lab')}>
-                        <h3 style={{color: 'var(--bleu)', marginBottom: '1rem', fontSize: '1.4rem'}}>🔬 Lab amélioration continue</h3>
-                        <p>Participez à l'évaluation et à l'amélioration du modèle avec nos outils d'auto-évaluation.</p>
-                    </div>
-                    <div className="card" style={{borderTop: '4px solid var(--rose)', cursor: 'pointer'}} onClick={() => setPage('timeline')}>
-                        <h3 style={{color: 'var(--rose)', marginBottom: '1rem', fontSize: '1.4rem'}}>📅 Vision 2025-2030</h3>
-                        <p>Découvrez la roadmap du CEP 2.0 et son évolution vers le CEP 3.0 avec l'IA éthique.</p>
+
+                    <div className="card" style={{marginTop: '3rem', background: 'linear-gradient(135deg, #fff 0%, #f4f4f4 100%)'}}>
+                        <h2 style={{color: '#2897d5', marginBottom: '1.5rem', fontSize: '1.8rem'}}>🎯 Une approche systémique</h2>
+                        <p style={{fontSize: '1.15rem', lineHeight: '1.9'}}>
+                            Ces 10 axes ne fonctionnent pas de manière isolée. Ils forment un écosystème cohérent où 
+                            chaque dimension renforce les autres. L'accompagnement dans la durée permet de développer 
+                            une vraie posture relationnelle. Les compétences hybrides s'appuient sur les outils numériques. 
+                            Le territoire apprenant nourrit l'innovation continue. C'est cette vision systémique qui fait 
+                            la force du CEP 2.0.
+                        </p>
                     </div>
                 </div>
+            );
+        }
 
-                <div className="card" style={{background: 'linear-gradient(135deg, var(--gris) 0%, white 100%)', marginTop: '3rem'}}>
-                    <h2 style={{color: 'var(--orange)', marginBottom: '1.5rem'}}>Le CEP 2.0, c'est quoi ?</h2>
-                    <p style={{fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem'}}>
-                        Le Conseil en Évolution Professionnelle 2.0 représente une transformation profonde de l'accompagnement des jeunes. 
-                        Il ne s'agit plus seulement d'orienter vers l'emploi ou la formation, mais d'accompagner une véritable transformation 
-                        de parcours de vie.
-                    </p>
-                    <p style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
-                        Ce modèle vivant et territorial s'appuie sur 10 axes complémentaires, alliant innovation numérique, 
-                        évaluation qualitative, territoire apprenant et droit à l'expérimentation. Il place le jeune au centre 
-                        comme acteur de son parcours, avec des conseillers qui deviennent facilitateurs et designers de parcours.
-                    </p>
-                </div>
-
-                <div className="card" style={{background: 'linear-gradient(135deg, var(--bleu) 0%, var(--vert) 100%)', color: 'white', marginTop: '2rem'}}>
-                    <h2 style={{marginBottom: '1.5rem'}}>✨ Les piliers du modèle MLPB 2.0</h2>
-                    <div className="grid" style={{gap: '1rem'}}>
-                        <div style={{background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '8px'}}>
-                            <h3 style={{marginBottom: '0.8rem', fontSize: '1.1rem'}}>🎯 Approche par les capabilités</h3>
-                            <p style={{opacity: 0.95, fontSize: '0.95rem'}}>Donner des moyens réels d'agir aux conseillers et aux jeunes</p>
-                        </div>
-                        <div style={{background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '8px'}}>
-                            <h3 style={{marginBottom: '0.8rem', fontSize: '1.1rem'}}>🤝 Culture commune transversale</h3>
-                            <p style={{opacity: 0.95, fontSize: '0.95rem'}}>Entre pôles et territoires pour une cohérence d'ensemble</p>
-                        </div>
-                        <div style={{background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '8px'}}>
-                            <h3 style={{marginBottom: '0.8rem', fontSize: '1.1rem'}}>💬 Participation des jeunes</h3>
-                            <p style={{opacity: 0.95, fontSize: '0.95rem'}}>À la conception, l'évaluation et la communication</p>
-                        </div>
-                        <div style={{background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '8px'}}>
-                            <h3 style={{marginBottom: '0.8rem', fontSize: '1.1rem'}}>🔍 Veille territoriale</h3>
-                            <p style={{opacity: 0.95, fontSize: '0.95rem'}}>Analyse continue des besoins locaux et sociétaux</p>
-                        </div>
-                        <div style={{background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '8px'}}>
-                            <h3 style={{marginBottom: '0.8rem', fontSize: '1.1rem'}}>🚀 Innovation pédagogique</h3>
-                            <p style={{opacity: 0.95, fontSize: '0.95rem'}}>IA éthique, VR, learning by doing</p>
-                        </div>
-                        <div style={{background: 'rgba(255,255,255,0.1)', padding: '1.5rem', borderRadius: '8px'}}>
-                            <h3 style={{marginBottom: '0.8rem', fontSize: '1.1rem'}}>🌐 Décloisonnement total</h3>
-                            <p style={{opacity: 0.95, fontSize: '0.95rem'}}>Inter-secteurs, inter-territoires, inter-générations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-
-        const MiroirPage = () => {
+        function MiroirPage() {
             const comparisons = [
-                {
-                    axe: "Finalité",
-                    classique: "Orientation emploi-formation",
-                    cep2: "Transformation de parcours de vie"
-                },
-                {
-                    axe: "Posture",
-                    classique: "Conseiller-expert",
-                    cep2: "Facilitateur / designer de parcours"
-                },
-                {
-                    axe: "Temporalité",
-                    classique: "Linéaire",
-                    cep2: "Modulaire, adaptative"
-                },
-                {
-                    axe: "Outils",
-                    classique: "Fiches, référentiels fixes",
-                    cep2: "UX design, VR, IA, portfolio"
-                },
-                {
-                    axe: "Évaluation",
-                    classique: "Entrée/sortie dispositif",
-                    cep2: "Impact qualitatif et autonomie"
-                },
-                {
-                    axe: "Gouvernance",
-                    classique: "Processus normatif",
-                    cep2: "Plan d'amélioration continue"
-                }
+                { axe: "Finalité", classique: "Orientation emploi-formation", cep2: "Transformation de parcours de vie" },
+                { axe: "Posture", classique: "Conseiller-expert", cep2: "Facilitateur / designer de parcours" },
+                { axe: "Temporalité", classique: "Linéaire", cep2: "Modulaire, adaptative" },
+                { axe: "Outils", classique: "Fiches, référentiels fixes", cep2: "UX design, VR, IA, portfolio" },
+                { axe: "Évaluation", classique: "Entrée/sortie dispositif", cep2: "Impact qualitatif et autonomie" },
+                { axe: "Gouvernance", classique: "Processus normatif", cep2: "Plan d'amélioration continue" }
             ];
 
             return (
@@ -939,645 +902,141 @@
                     <h1 className="page-title">🔄 Miroir CEP Classique / CEP 2.0</h1>
                     <p className="page-subtitle">Comprendre l'évolution du modèle d'accompagnement</p>
 
-                    <div className="card">
-                        <p style={{fontSize: '1.1rem', marginBottom: '2rem', color: '#666'}}>
+                    <div className="card" style={{marginBottom: '3rem'}}>
+                        <p style={{fontSize: '1.2rem', marginBottom: '0', color: '#666', lineHeight: '1.8', textAlign: 'center'}}>
                             Le CEP 2.0 ne rejette pas le CEP classique, il l'enrichit et le transforme pour répondre 
                             aux défis actuels : révolution numérique, mutation du travail, enjeux climatiques, 
                             aspiration à donner du sens.
                         </p>
+                    </div>
 
-                        <div className="comparison-table">
-                            <div className="comparison-row">
-                                <div className="comparison-cell comparison-header">Axe de comparaison</div>
-                                <div className="comparison-cell comparison-header">CEP Classique</div>
-                                <div className="comparison-cell comparison-header">CEP 2.0</div>
-                            </div>
-                            {comparisons.map((comp, i) => (
-                                <div key={i} className="comparison-row">
-                                    <div className="comparison-cell" style={{fontWeight: '700', color: 'var(--bleu)'}}>
-                                        {comp.axe}
-                                    </div>
-                                    <div className="comparison-cell">{comp.classique}</div>
-                                    <div className="comparison-cell" style={{background: '#fff8f0'}}>
-                                        {comp.cep2}
-                                    </div>
+                    <div className="comparison-table">
+                        <div className="comparison-row">
+                            <div className="comparison-cell comparison-header">Axe de comparaison</div>
+                            <div className="comparison-cell comparison-header">CEP Classique</div>
+                            <div className="comparison-cell comparison-header">CEP 2.0</div>
+                        </div>
+                        {comparisons.map((comp, i) => (
+                            <div key={i} className="comparison-row">
+                                <div className="comparison-cell" style={{fontWeight: '700', color: '#2897d5', fontSize: '1.05rem'}}>
+                                    {comp.axe}
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="grid" style={{marginTop: '2rem'}}>
-                        <div className="card" style={{borderLeft: '5px solid var(--orange)'}}>
-                            <h3 style={{color: 'var(--orange)', marginBottom: '1rem'}}>💡 Exemple : Baserriberri</h3>
-                            <p>Programme de formation longue durée avec Lab d'expérimentation, simulations métiers en VR, 
-                            et évaluation par les capabilités plutôt que par les résultats d'insertion uniquement.</p>
-                        </div>
-                        <div className="card" style={{borderLeft: '5px solid var(--vert)'}}>
-                            <h3 style={{color: 'var(--vert)', marginBottom: '1rem'}}>🌍 Exemple : LS4YOU & Take Off Pro</h3>
-                            <p>Mobilité européenne avec grille Life & Mobility Skills, badges numériques, modules Physical & Mental Fitness, 
-                            et reconnaissance des compétences linguistiques et interculturelles.</p>
-                        </div>
-                        <div className="card" style={{borderLeft: '5px solid var(--bleu)'}}>
-                            <h3 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>🚀 Exemple : Roaming FSE+</h3>
-                            <p>Expérimentation avec réalité virtuelle, IA de matching éthique, podcast "Jeunes en mouvement", 
-                            et approche transfrontalière avec plateforme collaborative.</p>
-                        </div>
-                        <div className="card" style={{borderLeft: '5px solid var(--rose)'}}>
-                            <h3 style={{color: 'var(--rose)', marginBottom: '1rem'}}>💬 Exemple : Parole Jeune</h3>
-                            <p>Ateliers de co-décision CEP/CEJ où les jeunes sont acteurs de l'évaluation, 
-                            participent à la communication (#jerichocampaign) et contribuent au Baromètre Jeunes Territoire.</p>
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-        const AxesPage = ({ axes, openModal }) => (
-            <div>
-                <h1 className="page-title">⚙️ Les 10 Axes du CEP 2.0</h1>
-                <p className="page-subtitle">Cliquez sur chaque axe pour en savoir plus</p>
-
-                <div className="grid">
-                    {axes.map((axe) => (
-                        <div 
-                            key={axe.id} 
-                            className="axe-card" 
-                            style={{borderLeftColor: axe.color, color: axe.color}}
-                            onClick={() => openModal(axe)}
-                        >
-                            <div className="axe-icon">{axe.icon}</div>
-                            <div className="axe-title">{axe.title}</div>
-                            <div className="axe-desc" style={{color: '#666'}}>
-                                {axe.accroche}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="card" style={{marginTop: '3rem', background: 'linear-gradient(135deg, #fff 0%, var(--gris) 100%)'}}>
-                    <h2 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>🎯 Une approche systémique</h2>
-                    <p style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
-                        Ces 10 axes ne fonctionnent pas de manière isolée. Ils forment un écosystème cohérent où 
-                        chaque dimension renforce les autres. L'accompagnement dans la durée permet de développer 
-                        une vraie posture relationnelle. Les compétences hybrides s'appuient sur les outils numériques. 
-                        Le territoire apprenant nourrit l'innovation continue. C'est cette vision systémique qui fait 
-                        la force du CEP 2.0.
-                    </p>
-                </div>
-            </div>
-        );
-
-        const CartePage = () => {
-            const zones = [
-                {
-                    nom: "Littoral",
-                    color: "var(--bleu)",
-                    contexte: "Tourisme, emplois saisonniers, tension sur le logement",
-                    adaptation: "Accompagnement spécifique saisonniers, médiation logement, diversification emploi",
-                    partenaires: "Offices du tourisme, entreprises hôtelières, bailleurs sociaux"
-                },
-                {
-                    nom: "Intérieur rural",
-                    color: "var(--vert)",
-                    contexte: "Agriculture, ESS, enjeux de mobilité",
-                    adaptation: "Solutions de mobilité (co-voiturage, permis), accompagnement métiers ruraux et ESS",
-                    partenaires: "Chambre d'agriculture, PETR, associations locales"
-                },
-                {
-                    nom: "Montagne",
-                    color: "var(--orange)",
-                    contexte: "Emplois isolés, inclusion numérique, saisonnalité",
-                    adaptation: "Accompagnement à distance, formation numérique, pluriactivité",
-                    partenaires: "Communautés de communes, tiers-lieux, télécentres"
-                },
-                {
-                    nom: "Transfrontalier",
-                    color: "var(--rose)",
-                    contexte: "Mobilité Espagne, bilinguisme, opportunités formation",
-                    adaptation: "Programmes mobilité européenne, reconnaissance compétences linguistiques",
-                    partenaires: "ICT, Pistes Solidaires, partenaires espagnols"
-                }
-            ];
-
-            return (
-                <div>
-                    <h1 className="page-title">🗺️ Carte Territoriale du Pays Basque</h1>
-                    <p className="page-subtitle">Un modèle commun, des chemins multiples</p>
-
-                    <div className="map-container">
-                        <h2 style={{color: 'var(--bleu)', marginBottom: '1.5rem', textAlign: 'center'}}>
-                            4 zones, 4 adaptations du CEP 2.0
-                        </h2>
-                        <p style={{textAlign: 'center', color: '#666', marginBottom: '2rem'}}>
-                            Le CEP 2.0 s'adapte aux réalités socio-économiques de chaque territoire tout en 
-                            conservant une cohérence d'ensemble.
-                        </p>
-
-                        <div className="map-grid">
-                            {zones.map((zone, i) => (
-                                <div key={i} className="zone-card" style={{borderLeftColor: zone.color}}>
-                                    <h3 style={{color: zone.color, fontSize: '1.4rem', marginBottom: '1rem'}}>
-                                        📍 {zone.nom}
-                                    </h3>
-                                    <div style={{marginBottom: '0.8rem'}}>
-                                        <strong>Contexte :</strong>
-                                        <p style={{color: '#666', marginTop: '0.3rem'}}>{zone.contexte}</p>
-                                    </div>
-                                    <div style={{marginBottom: '0.8rem'}}>
-                                        <strong>Adaptation CEP 2.0 :</strong>
-                                        <p style={{color: '#666', marginTop: '0.3rem'}}>{zone.adaptation}</p>
-                                    </div>
-                                    <div>
-                                        <strong>Partenaires clés :</strong>
-                                        <p style={{color: '#666', marginTop: '0.3rem'}}>{zone.partenaires}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="card" style={{marginTop: '2rem'}}>
-                        <h2 style={{color: 'var(--vert)', marginBottom: '1rem'}}>🌐 Le Pays Basque comme territoire apprenant</h2>
-                        <p style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
-                            Cette déclinaison territoriale illustre l'axe 10 du CEP 2.0 : un modèle commun avec des chemins 
-                            multiples. Chaque zone bénéficie de l'expertise collective tout en développant ses propres 
-                            réponses. Les innovations d'un territoire peuvent ensuite être mutualisées et adaptées ailleurs. 
-                            C'est le principe du territoire apprenant.
-                        </p>
-                    </div>
-                </div>
-            );
-        };
-
-        const LabPage = () => (
-            <div>
-                <h1 className="page-title">🔬 Lab Amélioration Continue</h1>
-                <p className="page-subtitle">Évaluez et contribuez à l'évolution du modèle</p>
-
-                <div className="card" style={{background: 'linear-gradient(135deg, var(--bleu) 0%, var(--vert) 100%)', color: 'white'}}>
-                    <h2 style={{marginBottom: '1rem'}}>💡 Le Lab CEP 2.0, qu'est-ce que c'est ?</h2>
-                    <p style={{fontSize: '1.1rem', lineHeight: '1.8', opacity: 0.95}}>
-                        Un espace collaboratif de réflexion et d'innovation où conseillers, jeunes, partenaires 
-                        et décideurs se retrouvent pour évaluer les pratiques, partager les innovations, 
-                        identifier les points d'amélioration et co-construire l'avenir du CEP.
-                    </p>
-                </div>
-
-                <div className="grid">
-                    <div className="card">
-                        <h3 style={{color: 'var(--orange)', marginBottom: '1rem'}}>📊 Auto-évaluation</h3>
-                        <p style={{marginBottom: '1.5rem'}}>
-                            Évaluez votre pratique ou votre structure sur les 10 axes du CEP 2.0
-                        </p>
-                        <div style={{background: 'var(--gris)', padding: '1rem', borderRadius: '8px', marginBottom: '1rem'}}>
-                            <p><strong>Axe 1 :</strong> Accompagnement dans la durée</p>
-                            <input type="range" min="1" max="5" defaultValue="3" style={{width: '100%', marginTop: '0.5rem'}} />
-                            <p style={{fontSize: '0.9rem', color: '#666', marginTop: '0.3rem'}}>1 = À développer | 5 = Maîtrisé</p>
-                        </div>
-                        <button className="btn btn-primary" style={{width: '100%'}}>
-                            Commencer l'auto-évaluation complète
-                        </button>
-                    </div>
-
-                    <div className="card">
-                        <h3 style={{color: 'var(--rose)', marginBottom: '1rem'}}>💬 Partagez vos idées</h3>
-                        <p style={{marginBottom: '1.5rem'}}>
-                            Contribuez à l'amélioration du modèle en partageant vos observations et suggestions
-                        </p>
-                        <textarea 
-                            placeholder="Quelle innovation proposeriez-vous pour améliorer le CEP 2.0 ?"
-                            style={{
-                                width: '100%', 
-                                height: '120px', 
-                                padding: '1rem', 
-                                borderRadius: '8px',
-                                border: '1px solid #ddd',
-                                fontFamily: 'Mulish',
-                                fontSize: '1rem',
-                                marginBottom: '1rem'
-                            }}
-                        ></textarea>
-                        <button className="btn btn-secondary" style={{width: '100%'}}>
-                            Envoyer ma contribution
-                        </button>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <h3 style={{color: 'var(--vert)', marginBottom: '1.5rem'}}>📅 Synthèse Lab 2025</h3>
-                    <div className="grid">
-                        <div style={{background: 'var(--gris)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center'}}>
-                            <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--orange)'}}>150+</div>
-                            <p style={{color: '#666'}}>Participants au Lab</p>
-                        </div>
-                        <div style={{background: 'var(--gris)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center'}}>
-                            <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--bleu)'}}>45</div>
-                            <p style={{color: '#666'}}>Innovations testées</p>
-                        </div>
-                        <div style={{background: 'var(--gris)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center'}}>
-                            <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--vert)'}}>12</div>
-                            <p style={{color: '#666'}}>Pratiques mutualisées</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="card" style={{background: '#fff8f0'}}>
-                    <h3 style={{color: 'var(--orange)', marginBottom: '1rem'}}>🎯 Prochaines étapes</h3>
-                    <ul>
-                        <li>Analyse des retours d'expérience 2025</li>
-                        <li>Identification des bonnes pratiques à généraliser</li>
-                        <li>Co-construction du plan d'action 2026</li>
-                        <li>Formation des équipes sur les nouvelles méthodes</li>
-                        <li>Lancement du Lab CEP 2.0 régional avec Grand Angle</li>
-                    </ul>
-                </div>
-            </div>
-        );
-
-        const AtelierPage = () => (
-            <div>
-                <h1 className="page-title">🎨 Atelier Participatif</h1>
-                <p className="page-subtitle">Un outil pour animer vos séminaires et formations CEP 2.0</p>
-
-                <div className="card" style={{background: 'linear-gradient(135deg, var(--rose) 0%, var(--orange) 100%)', color: 'white'}}>
-                    <h2 style={{marginBottom: '1rem'}}>🎯 Mode d'emploi de l'atelier</h2>
-                    <p style={{fontSize: '1.1rem', opacity: 0.95'}}>
-                        Cet atelier en 4 étapes permet de faire le diagnostic de vos pratiques actuelles, 
-                        identifier ce qui ne fonctionne plus, découvrir comment le CEP 2.0 y répond, 
-                        et imaginer collectivement votre CEP de demain.
-                    </p>
-                </div>
-
-                <div className="grid">
-                    <div className="card" style={{borderTop: '5px solid var(--bleu)'}}>
-                        <h3 style={{color: 'var(--bleu)', fontSize: '1.5rem', marginBottom: '1rem'}}>
-                            1️⃣ Notre CEP aujourd'hui
-                        </h3>
-                        <p style={{marginBottom: '1rem'}}>
-                            <strong>Nuage de mots dynamique :</strong> Chaque participant écrit 3 mots-clés 
-                            qui décrivent leur pratique actuelle du CEP.
-                        </p>
-                        <div style={{background: 'var(--gris)', padding: '1.5rem', borderRadius: '8px', textAlign: 'center'}}>
-                            <div style={{fontSize: '1.5rem', fontWeight: '700', color: 'var(--bleu)', marginBottom: '0.5rem'}}>
-                                Écoute • Diagnostic • Orientation
-                            </div>
-                            <div style={{fontSize: '1.2rem', color: '#888'}}>
-                                Entretien • Accompagnement • Formation
-                            </div>
-                            <div style={{fontSize: '1rem', color: '#aaa'}}>
-                                Dispositif • Parcours • Insertion
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="card" style={{borderTop: '5px solid var(--rose)'}}>
-                        <h3 style={{color: 'var(--rose)', fontSize: '1.5rem', marginBottom: '1rem'}}>
-                            2️⃣ Ce qui ne marche plus
-                        </h3>
-                        <p style={{marginBottom: '1rem'}}>
-                            <strong>Post-it interactifs :</strong> Identifiez les limites, frustrations, 
-                            obstacles de l'approche actuelle.
-                        </p>
-                        <div style={{display: 'flex', gap: '0.5rem', flexWrap: 'wrap'}}>
-                            <div style={{background: '#ffeb3b', padding: '0.8rem', borderRadius: '4px', fontSize: '0.9rem'}}>
-                                Manque de temps
-                            </div>
-                            <div style={{background: '#ffeb3b', padding: '0.8rem', borderRadius: '4px', fontSize: '0.9rem'}}>
-                                Outils obsolètes
-                            </div>
-                            <div style={{background: '#ffeb3b', padding: '0.8rem', borderRadius: '4px', fontSize: '0.9rem'}}>
-                                Trop normatif
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="card" style={{borderTop: '5px solid var(--vert)'}}>
-                        <h3 style={{color: 'var(--vert)', fontSize: '1.5rem', marginBottom: '1rem'}}>
-                            3️⃣ Où le CEP 2.0 répond
-                        </h3>
-                        <p style={{marginBottom: '1rem'}}>
-                            <strong>Glisser-déposer :</strong> Reliez vos obstacles aux axes du CEP 2.0 
-                            qui apportent des solutions.
-                        </p>
-                        <div style={{background: 'var(--gris)', padding: '1rem', borderRadius: '8px'}}>
-                            <p style={{marginBottom: '0.5rem'}}>
-                                "Manque de temps" → <span style={{color: 'var(--orange)', fontWeight: '700'}}>Axe 1: Accompagnement dans la durée</span>
-                            </p>
-                            <p style={{marginBottom: '0.5rem'}}>
-                                "Outils obsolètes" → <span style={{color: 'var(--bleu)', fontWeight: '700'}}>Axe 4: Humain + Digital</span>
-                            </p>
-                            <p>
-                                "Trop normatif" → <span style={{color: 'var(--orange)', fontWeight: '700'}}>Axe 9: Innovation continue</span>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="card" style={{borderTop: '5px solid var(--orange)'}}>
-                        <h3 style={{color: 'var(--orange)', fontSize: '1.5rem', marginBottom: '1rem'}}>
-                            4️⃣ Imaginer 2030
-                        </h3>
-                        <p style={{marginBottom: '1rem'}}>
-                            <strong>Zone de projection libre :</strong> Dessinez ou décrivez votre CEP idéal 
-                            en 2030.
-                        </p>
-                        <textarea 
-                            placeholder="En 2030, notre CEP sera..."
-                            style={{
-                                width: '100%', 
-                                height: '100px', 
-                                padding: '1rem', 
-                                borderRadius: '8px',
-                                border: '2px dashed var(--orange)',
-                                fontFamily: 'Mulish',
-                                fontSize: '1rem'
-                            }}
-                        ></textarea>
-                    </div>
-                </div>
-
-                <div className="card" style={{background: '#f0f9ff', textAlign: 'center'}}>
-                    <h3 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>✅ Valider mes engagements</h3>
-                    <p style={{marginBottom: '1.5rem'}}>
-                        À l'issue de l'atelier, formalisez vos engagements individuels ou collectifs 
-                        pour faire évoluer votre pratique vers le CEP 2.0.
-                    </p>
-                    <button className="btn btn-primary" style={{marginRight: '1rem'}}>
-                        📄 Exporter en PDF
-                    </button>
-                    <button className="btn btn-secondary">
-                        📧 Envoyer par email
-                    </button>
-                </div>
-            </div>
-        );
-
-        const ImpactPage = () => (
-            <div>
-                <h1 className="page-title">📊 Pilotage et Impact</h1>
-                <p className="page-subtitle">Mesurer autrement pour accompagner mieux</p>
-
-                <div className="card" style={{background: 'linear-gradient(135deg, var(--bleu) 0%, var(--vert) 100%)', color: 'white'}}>
-                    <h2 style={{marginBottom: '1rem'}}>🎯 Une évaluation qualitative</h2>
-                    <p style={{fontSize: '1.1rem', opacity: 0.95'}}>
-                        Le CEP 2.0 ne se contente pas de mesurer les taux d'insertion. Il évalue l'impact sur 
-                        l'autonomie, la confiance, la mobilité, la persévérance et le bien-être des jeunes accompagnés.
-                    </p>
-                </div>
-
-                <div className="grid">
-                    <div className="card" style={{textAlign: 'center', background: '#fff8f0'}}>
-                        <div style={{fontSize: '3rem', marginBottom: '0.5rem'}}>📈</div>
-                        <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--orange)', marginBottom: '0.5rem'}}>
-                            78%
-                        </div>
-                        <p style={{color: '#666'}}>Insertion durable à 6 mois</p>
-                    </div>
-                    <div className="card" style={{textAlign: 'center', background: '#f0f9ff'}}>
-                        <div style={{fontSize: '3rem', marginBottom: '0.5rem'}}>🌍</div>
-                        <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--bleu)', marginBottom: '0.5rem'}}>
-                            +45%
-                        </div>
-                        <p style={{color: '#666'}}>Mobilité géographique</p>
-                    </div>
-                    <div className="card" style={{textAlign: 'center', background: '#f0fff4'}}>
-                        <div style={{fontSize: '3rem', marginBottom: '0.5rem'}}>💚</div>
-                        <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--vert)', marginBottom: '0.5rem'}}>
-                            4.2/5
-                        </div>
-                        <p style={{color: '#666'}}>Bien-être et confiance</p>
-                    </div>
-                    <div className="card" style={{textAlign: 'center', background: '#fff0f6'}}>
-                        <div style={{fontSize: '3rem', marginBottom: '0.5rem'}}>🎓</div>
-                        <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--rose)', marginBottom: '0.5rem'}}>
-                            92%
-                        </div>
-                        <p style={{color: '#666'}}>Progression autonomie</p>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <h3 style={{color: 'var(--bleu)', marginBottom: '1.5rem'}}>📋 Indicateurs qualitatifs</h3>
-                    <div className="grid">
-                        <div>
-                            <h4 style={{color: 'var(--orange)', marginBottom: '0.8rem'}}>Confiance en soi</h4>
-                            <div style={{background: '#f4f4f4', height: '20px', borderRadius: '10px', overflow: 'hidden'}}>
-                                <div style={{background: 'var(--orange)', height: '100%', width: '85%', borderRadius: '10px'}}></div>
-                            </div>
-                            <p style={{fontSize: '0.9rem', color: '#666', marginTop: '0.3rem'}}>85% d'évolution positive</p>
-                        </div>
-                        <div>
-                            <h4 style={{color: 'var(--vert)', marginBottom: '0.8rem'}}>Capacité de projection</h4>
-                            <div style={{background: '#f4f4f4', height: '20px', borderRadius: '10px', overflow: 'hidden'}}>
-                                <div style={{background: 'var(--vert)', height: '100%', width: '76%', borderRadius: '10px'}}></div>
-                            </div>
-                            <p style={{fontSize: '0.9rem', color: '#666', marginTop: '0.3rem'}}>76% d'évolution positive</p>
-                        </div>
-                        <div>
-                            <h4 style={{color: 'var(--bleu)', marginBottom: '0.8rem'}}>Persévérance</h4>
-                            <div style={{background: '#f4f4f4', height: '20px', borderRadius: '10px', overflow: 'hidden'}}>
-                                <div style={{background: 'var(--bleu)', height: '100%', width: '82%', borderRadius: '10px'}}></div>
-                            </div>
-                            <p style={{fontSize: '0.9rem', color: '#666', marginTop: '0.3rem'}}>82% d'évolution positive</p>
-                        </div>
-                        <div>
-                            <h4 style={{color: 'var(--rose)', marginBottom: '0.8rem'}}>Ouverture</h4>
-                            <div style={{background: '#f4f4f4', height: '20px', borderRadius: '10px', overflow: 'hidden'}}>
-                                <div style={{background: 'var(--rose)', height: '100%', width: '88%', borderRadius: '10px'}}></div>
-                            </div>
-                            <p style={{fontSize: '0.9rem', color: '#666', marginTop: '0.3rem'}}>88% d'évolution positive</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="card" style={{background: 'var(--gris)'}}>
-                    <h3 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>📝 Évaluation à 6 mois</h3>
-                    <p style={{marginBottom: '1.5rem'}}>
-                        Nous contacter tous les jeunes accompagnés 6 mois après la fin de leur parcours pour 
-                        mesurer l'impact durable de notre accompagnement. Cette évaluation utilise un 
-                        questionnaire Sphinx couvrant insertion, mobilité, bien-être et satisfaction.
-                    </p>
-                    <button className="btn btn-secondary">
-                        🔗 Accéder au formulaire d'évaluation
-                    </button>
-                </div>
-
-                <div className="card">
-                    <h3 style={{color: 'var(--rose)', marginBottom: '1rem'}}>💬 Satisfaction des conseillers</h3>
-                    <p style={{fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem'}}>
-                        Le CEP 2.0 améliore aussi la qualité de vie au travail des conseillers : 
-                        reconnaissance de la complexité du métier, formation continue, autonomie professionnelle, 
-                        participation à l'innovation.
-                    </p>
-                    <div style={{background: '#f0fff4', padding: '1.5rem', borderRadius: '8px', textAlign: 'center'}}>
-                        <div style={{fontSize: '2.5rem', fontWeight: '700', color: 'var(--vert)'}}>4.4/5</div>
-                        <p style={{color: '#666'}}>Note moyenne de satisfaction des conseillers</p>
-                    </div>
-                </div>
-            </div>
-        );
-
-        const TimelinePage = () => {
-            const timeline = [
-                {
-                    year: "2025",
-                    title: "Validation du référentiel CEP 2.0",
-                    content: "Finalisation et adoption du modèle CEP 2.0 par la Mission Locale Pays Basque. Formation des équipes, présentation aux partenaires, lancement officiel."
-                },
-                {
-                    year: "2026",
-                    title: "Lancement PAVAMI 2.0 + Lab CEP",
-                    content: "Déploiement de la nouvelle version de la plateforme numérique PAVAMI avec IA et VR. Création du Lab CEP 2.0 comme instance permanente d'innovation."
-                },
-                {
-                    year: "2027",
-                    title: "1er rapport d'impact territorial",
-                    content: "Publication du premier bilan d'impact qualitatif et quantitatif du CEP 2.0 sur les 4 zones du Pays Basque. Capitalisation des bonnes pratiques."
-                },
-                {
-                    year: "2028",
-                    title: "Mutualisation régionale Grand Angle",
-                    content: "Extension du modèle CEP 2.0 au réseau régional Grand Angle. Co-construction d'un référentiel partagé Nouvelle-Aquitaine."
-                },
-                {
-                    year: "2030",
-                    title: "CEP 3.0 – IA éthique et inclusion totale",
-                    content: "Évolution vers le CEP 3.0 : intelligence artificielle éthique au service de l'inclusion, accessibilité universelle, impact carbone neutre."
-                }
-            ];
-
-            return (
-                <div>
-                    <h1 className="page-title">📅 Timeline 2025 → 2030</h1>
-                    <p className="page-subtitle">La roadmap du CEP 2.0 et au-delà</p>
-
-                    <div className="card" style={{background: 'linear-gradient(135deg, var(--orange) 0%, var(--rose) 100%)', color: 'white', textAlign: 'center'}}>
-                        <h2 style={{marginBottom: '1rem'}}>🚀 Notre trajectoire d'innovation</h2>
-                        <p style={{fontSize: '1.2rem', opacity: 0.95'}}>
-                            Du CEP 2.0 au CEP 3.0 : 5 ans pour transformer durablement l'accompagnement des jeunes
-                        </p>
-                    </div>
-
-                    <div className="timeline">
-                        {timeline.map((item, i) => (
-                            <div key={i} className="timeline-item">
-                                <div className="timeline-year">{item.year}</div>
-                                <div className="timeline-content">
-                                    <h3 style={{color: 'var(--bleu)', marginBottom: '0.8rem', fontSize: '1.3rem'}}>
-                                        {item.title}
-                                    </h3>
-                                    <p style={{color: '#666', lineHeight: '1.7'}}>{item.content}</p>
+                                <div className="comparison-cell" style={{fontSize: '1.05rem'}}>{comp.classique}</div>
+                                <div className="comparison-cell" style={{background: '#fff8f0', fontSize: '1.05rem', fontWeight: '600'}}>
+                                    {comp.cep2}
                                 </div>
                             </div>
                         ))}
                     </div>
 
-                    <div className="card" style={{background: '#f0f9ff', marginTop: '2rem'}}>
-                        <h3 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>🔮 Vers le CEP 3.0</h3>
-                        <p style={{fontSize: '1.1rem', lineHeight: '1.8', marginBottom: '1rem'}}>
-                            Le CEP 3.0 sera l'aboutissement d'un processus d'amélioration continue. 
-                            Il intégrera les avancées de l'intelligence artificielle éthique pour personnaliser 
-                            encore davantage les parcours, tout en garantissant l'inclusion numérique de tous. 
-                        </p>
-                        <p style={{fontSize: '1.1rem', lineHeight: '1.8'}}>
-                            Il sera aussi éco-responsable, avec une attention portée à l'impact environnemental 
-                            des activités d'accompagnement et une promotion des métiers de la transition écologique.
-                        </p>
-                    </div>
-
-                    <div className="grid">
-                        <div className="card" style={{borderLeft: '5px solid var(--vert)'}}>
-                            <h4 style={{color: 'var(--vert)', marginBottom: '0.8rem'}}>🌱 Durabilité</h4>
-                            <p>Réduction de l'empreinte carbone, promotion de l'ESS et des métiers verts</p>
+                    <div className="grid" style={{marginTop: '3rem'}}>
+                        <div className="card" style={{borderLeft: '5px solid #f39200'}}>
+                            <h3 style={{color: '#f39200', marginBottom: '1rem', fontSize: '1.3rem'}}>💡 Exemple : Baserriberri</h3>
+                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
+                                Accompagnement sur 12 mois avec immersions longues, évaluation qualitative du bien-être 
+                                et de l'autonomie, et non seulement du placement.
+                            </p>
                         </div>
-                        <div className="card" style={{borderLeft: '5px solid var(--bleu)'}}>
-                            <h4 style={{color: 'var(--bleu)', marginBottom: '0.8rem'}}>🤖 IA éthique</h4>
-                            <p>Intelligence artificielle au service de l'humain, respectueuse des données personnelles</p>
+                        <div className="card" style={{borderLeft: '5px solid #95c11f'}}>
+                            <h3 style={{color: '#95c11f', marginBottom: '1rem', fontSize: '1.3rem'}}>🌍 Exemple : LS4YOU</h3>
+                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
+                                Mobilité européenne où le jeune est acteur de son projet, avec usage de portfolio numérique 
+                                et reconnaissance des compétences transversales.
+                            </p>
                         </div>
-                        <div className="card" style={{borderLeft: '5px solid var(--rose)'}}>
-                            <h4 style={{color: 'var(--rose)', marginBottom: '0.8rem'}}>♿ Accessibilité</h4>
-                            <p>Inclusion totale : accessibilité numérique, physique, cognitive pour tous</p>
+                        <div className="card" style={{borderLeft: '5px solid #2897d5'}}>
+                            <h3 style={{color: '#2897d5', marginBottom: '1rem', fontSize: '1.3rem'}}>🚀 Exemple : Roaming</h3>
+                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
+                                Expérimentation territoriale transfrontalière, droit à l'erreur, approche modulaire 
+                                avec outils numériques (VR, plateforme PAVAMI).
+                            </p>
                         </div>
                     </div>
                 </div>
             );
-        };
+        }
 
-        const RessourcesPage = () => {
+        function RessourcesPage() {
             const ressources = [
                 {
                     title: "Référentiel CEP 2.0 complet",
-                    desc: "Document de référence présentant le modèle, les 10 axes, les outils et méthodes",
+                    desc: "Document de référence présentant le modèle, les 10 axes, les outils et méthodes d'accompagnement. Version complète et détaillée.",
                     icon: "📘",
                     type: "PDF"
                 },
                 {
                     title: "Fiches déclinaisons locales",
-                    desc: "4 fiches détaillant l'adaptation du CEP 2.0 aux zones du Pays Basque",
+                    desc: "4 fiches détaillant l'adaptation du CEP 2.0 aux zones du Pays Basque : Littoral, Intérieur rural, Montagne, Transfrontalier.",
                     icon: "🗺️",
                     type: "PDF"
                 },
                 {
                     title: "Kit de formation CIBC",
-                    desc: "Module de formation pour conseillers : concepts, outils, mise en pratique",
+                    desc: "Module de formation complet pour conseillers : concepts clés, outils pratiques, mises en situation et études de cas.",
                     icon: "🎓",
                     type: "ZIP"
                 },
                 {
                     title: "Livret LS4YOU",
-                    desc: "Guide des mobilités européennes pour les jeunes et les conseillers",
+                    desc: "Guide des mobilités européennes pour les jeunes et les conseillers. Méthodologie, outils et retours d'expérience.",
                     icon: "🌍",
                     type: "PDF"
                 },
                 {
                     title: "Outils numériques",
-                    desc: "Accès à la plateforme PAVAMI, portfolio numérique, ressources VR",
+                    desc: "Accès à la plateforme PAVAMI, portfolio numérique, ressources VR, supports de formation digitale et tutoriels.",
                     icon: "💻",
                     type: "WEB"
                 },
                 {
                     title: "Grille d'auto-évaluation",
-                    desc: "Outil d'évaluation des pratiques sur les 10 axes du CEP 2.0",
+                    desc: "Outil d'évaluation des pratiques sur les 10 axes du CEP 2.0. Format tableur avec tableau de bord intégré.",
                     icon: "📊",
                     type: "XLSX"
+                },
+                {
+                    title: "Guide Green Guidance",
+                    desc: "Référentiel d'orientation éco-responsable. Intégrer les enjeux environnementaux dans l'accompagnement CEP.",
+                    icon: "🌱",
+                    type: "PDF"
+                },
+                {
+                    title: "Catalogue PAVAMI 2.0",
+                    desc: "Catalogue modulaire des formations : ADVP, soft skills, santé mentale, IA, international. Parcours personnalisables.",
+                    icon: "📚",
+                    type: "PDF"
+                },
+                {
+                    title: "Templates & Outils pratiques",
+                    desc: "Collection d'outils : grilles d'entretien, canvas territorial, tableaux de suivi, modèles de reporting.",
+                    icon: "🛠️",
+                    type: "ZIP"
                 }
             ];
 
             return (
                 <div>
-                    <h1 className="page-title">📚 Ressources</h1>
-                    <p className="page-subtitle">Téléchargez les documents et outils du CEP 2.0</p>
+                    <h1 className="page-title">📚 Ressources Téléchargeables</h1>
+                    <p className="page-subtitle">Documents, guides et outils pour mettre en œuvre le CEP 2.0</p>
 
-                    <div className="card" style={{background: 'linear-gradient(135deg, var(--vert) 0%, var(--bleu) 100%)', color: 'white'}}>
-                        <h2 style={{marginBottom: '1rem'}}>📦 Centre de ressources</h2>
-                        <p style={{fontSize: '1.1rem', opacity: 0.95'}}>
+                    <div className="card" style={{background: 'linear-gradient(135deg, #95c11f 0%, #2897d5 100%)', color: 'white', marginBottom: '3rem'}}>
+                        <h2 style={{marginBottom: '1rem', fontSize: '2rem'}}>📦 Centre de ressources</h2>
+                        <p style={{fontSize: '1.2rem', opacity: 0.95, lineHeight: '1.8'}}>
                             Retrouvez ici tous les documents de référence, guides pratiques, outils d'évaluation 
-                            et supports de formation pour mettre en œuvre le CEP 2.0.
+                            et supports de formation pour mettre en œuvre le CEP 2.0. Toutes les ressources sont 
+                            accessibles et téléchargeables librement.
                         </p>
                     </div>
 
                     <div className="grid">
                         {ressources.map((ress, i) => (
-                            <div key={i} className="card" style={{cursor: 'pointer', borderTop: '4px solid var(--bleu)'}}>
-                                <div style={{fontSize: '3rem', marginBottom: '1rem', textAlign: 'center'}}>
-                                    {ress.icon}
-                                </div>
-                                <h3 style={{color: 'var(--bleu)', marginBottom: '0.8rem', fontSize: '1.2rem'}}>
-                                    {ress.title}
-                                </h3>
-                                <p style={{color: '#666', marginBottom: '1rem', fontSize: '0.95rem'}}>
-                                    {ress.desc}
-                                </p>
-                                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                                    <span style={{
-                                        background: 'var(--gris)', 
-                                        padding: '0.3rem 0.8rem', 
-                                        borderRadius: '4px',
-                                        fontSize: '0.85rem',
-                                        fontWeight: '600'
-                                    }}>
-                                        {ress.type}
-                                    </span>
-                                    <button className="btn btn-primary" style={{padding: '0.5rem 1rem', margin: 0}}>
+                            <div key={i} className="ressource-card">
+                                <div className="ressource-icon">{ress.icon}</div>
+                                <h3 className="ressource-title">{ress.title}</h3>
+                                <p className="ressource-desc">{ress.desc}</p>
+                                <div className="ressource-footer">
+                                    <span className="ressource-type">{ress.type}</span>
+                                    <button className="btn btn-primary" style={{padding: '0.6rem 1.5rem', margin: 0, fontSize: '0.95rem'}}>
                                         📥 Télécharger
                                     </button>
                                 </div>
@@ -1585,9 +1044,9 @@
                         ))}
                     </div>
 
-                    <div className="card" style={{background: '#fff8f0', marginTop: '2rem'}}>
-                        <h3 style={{color: 'var(--orange)', marginBottom: '1rem'}}>🔔 Restez informé</h3>
-                        <p style={{marginBottom: '1.5rem'}}>
+                    <div className="card" style={{background: '#fff8f0', marginTop: '3rem'}}>
+                        <h3 style={{color: '#f39200', marginBottom: '1.5rem', fontSize: '1.6rem'}}>🔔 Restez informé</h3>
+                        <p style={{marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.7'}}>
                             Inscrivez-vous à notre newsletter pour recevoir les nouvelles ressources, 
                             les retours d'expérience et les innovations du Lab CEP 2.0.
                         </p>
@@ -1597,8 +1056,8 @@
                                 placeholder="Votre email"
                                 style={{
                                     flex: 1,
-                                    minWidth: '250px',
-                                    padding: '0.8rem',
+                                    minWidth: '280px',
+                                    padding: '1rem',
                                     border: '2px solid #ddd',
                                     borderRadius: '8px',
                                     fontSize: '1rem',
@@ -1612,174 +1071,10 @@
                     </div>
                 </div>
             );
-        };
+        }
 
-        const ContactPage = () => (
-            <div>
-                <h1 className="page-title">📧 Contact & Partenaires</h1>
-                <p className="page-subtitle">Rejoignez le réseau CEP 2.0</p>
-
-                <div className="card" style={{background: 'linear-gradient(135deg, var(--rose) 0%, var(--orange) 100%)', color: 'white', textAlign: 'center'}}>
-                    <h2 style={{marginBottom: '1rem'}}>🤝 Construisons ensemble le CEP de demain</h2>
-                    <p style={{fontSize: '1.2rem', opacity: 0.95', marginBottom: '2rem'}}>
-                        Le CEP 2.0 est un modèle ouvert, collaboratif et en constante évolution. 
-                        Rejoignez-nous pour co-construire l'accompagnement professionnel de demain.
-                    </p>
-                    <button className="btn" style={{background: 'white', color: 'var(--rose)', margin: 0}}>
-                        🚀 Rejoindre le Lab CEP 2.0
-                    </button>
-                </div>
-
-                <div className="grid">
-                    <div className="card">
-                        <h3 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>📍 Mission Locale Pays Basque</h3>
-                        <p style={{marginBottom: '0.8rem'}}><strong>Adresse :</strong></p>
-                        <p style={{color: '#666', marginBottom: '1rem'}}>
-                            Mission Locale du Pays Basque<br/>
-                            [Adresse complète]<br/>
-                            Pays Basque, France
-                        </p>
-                        <p style={{marginBottom: '0.8rem'}}><strong>Contact :</strong></p>
-                        <p style={{color: '#666'}}>
-                            Email: contact@mlpb.fr<br/>
-                            Tél: [Numéro de téléphone]
-                        </p>
-                    </div>
-
-                    <div className="card">
-                        <h3 style={{color: 'var(--vert)', marginBottom: '1rem'}}>🌐 Site web et réseaux</h3>
-                        <button className="btn btn-primary" style={{width: '100%', marginBottom: '0.8rem'}}>
-                            🌍 Site officiel MLPB
-                        </button>
-                        <button className="btn btn-secondary" style={{width: '100%', marginBottom: '0.8rem'}}>
-                            💼 LinkedIn
-                        </button>
-                        <button className="btn" style={{background: 'var(--vert)', color: 'white', width: '100%'}}>
-                            📱 Facebook
-                        </button>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <h3 style={{color: 'var(--orange)', marginBottom: '1.5rem', textAlign: 'center'}}>
-                        🤝 Nos partenaires
-                    </h3>
-                    <div className="logo-container" style={{background: 'transparent'}}>
-                        <div className="logo-item" style={{background: 'var(--bleu)', color: 'white'}}>
-                            MLPB
-                        </div>
-                        <div className="logo-item" style={{background: 'var(--vert)', color: 'white'}}>
-                            Pistes Solidaires
-                        </div>
-                        <div className="logo-item" style={{background: 'var(--rose)', color: 'white'}}>
-                            ICT
-                        </div>
-                        <div className="logo-item" style={{background: 'var(--orange)', color: 'white'}}>
-                            Eurorégion NAEN
-                        </div>
-                        <div className="logo-item" style={{background: '#1e7ab5', color: 'white'}}>
-                            FSE+
-                        </div>
-                        <div className="logo-item" style={{background: '#d67e00', color: 'white'}}>
-                            POCTEFA
-                        </div>
-                        <div className="logo-item" style={{background: '#b00942', color: 'white'}}>
-                            Erasmus+
-                        </div>
-                    </div>
-                </div>
-
-                <div className="grid">
-                    <div className="card" style={{background: '#f0f9ff'}}>
-                        <h3 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>💼 Vous êtes partenaire ?</h3>
-                        <p style={{marginBottom: '1rem'}}>
-                            Entreprise, collectivité, association, organisme de formation... 
-                            Collaborons pour enrichir le CEP 2.0 !
-                        </p>
-                        <button className="btn btn-secondary" style={{width: '100%'}}>
-                            Devenir partenaire
-                        </button>
-                    </div>
-
-                    <div className="card" style={{background: '#fff8f0'}}>
-                        <h3 style={{color: 'var(--orange)', marginBottom: '1rem'}}>🎓 Vous êtes conseiller ?</h3>
-                        <p style={{marginBottom: '1rem'}}>
-                            Rejoignez la communauté de pratiques CEP 2.0 et participez 
-                            aux formations et aux Labs d'innovation.
-                        </p>
-                        <button className="btn btn-primary" style={{width: '100%'}}>
-                            Rejoindre la communauté
-                        </button>
-                    </div>
-
-                    <div className="card" style={{background: '#f0fff4'}}>
-                        <h3 style={{color: 'var(--vert)', marginBottom: '1rem'}}>🔬 Vous êtes chercheur ?</h3>
-                        <p style={{marginBottom: '1rem'}}>
-                            Le CEP 2.0 est un terrain d'observation et d'expérimentation. 
-                            Proposez-nous vos projets de recherche !
-                        </p>
-                        <button className="btn" style={{background: 'var(--vert)', color: 'white', width: '100%'}}>
-                            Proposer un projet
-                        </button>
-                    </div>
-                </div>
-
-                <div className="card" style={{background: 'var(--gris)', textAlign: 'center'}}>
-                    <h3 style={{color: 'var(--bleu)', marginBottom: '1rem'}}>📬 Contactez-nous</h3>
-                    <p style={{marginBottom: '1.5rem', color: '#666'}}>
-                        Une question ? Une suggestion ? Un projet de partenariat ? 
-                        N'hésitez pas à nous écrire !
-                    </p>
-                    <form style={{maxWidth: '600px', margin: '0 auto'}}>
-                        <input 
-                            type="text"
-                            placeholder="Votre nom"
-                            style={{
-                                width: '100%',
-                                padding: '0.8rem',
-                                marginBottom: '1rem',
-                                border: '2px solid #ddd',
-                                borderRadius: '8px',
-                                fontSize: '1rem',
-                                fontFamily: 'Mulish'
-                            }}
-                        />
-                        <input 
-                            type="email"
-                            placeholder="Votre email"
-                            style={{
-                                width: '100%',
-                                padding: '0.8rem',
-                                marginBottom: '1rem',
-                                border: '2px solid #ddd',
-                                borderRadius: '8px',
-                                fontSize: '1rem',
-                                fontFamily: 'Mulish'
-                            }}
-                        />
-                        <textarea 
-                            placeholder="Votre message"
-                            style={{
-                                width: '100%',
-                                height: '120px',
-                                padding: '0.8rem',
-                                marginBottom: '1rem',
-                                border: '2px solid #ddd',
-                                borderRadius: '8px',
-                                fontSize: '1rem',
-                                fontFamily: 'Mulish',
-                                resize: 'vertical'
-                            }}
-                        ></textarea>
-                        <button className="btn btn-primary" type="submit" style={{width: '100%'}}>
-                            📨 Envoyer le message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        );
-
-        ReactDOM.render(<App />, document.getElementById('root'));
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
     </script>
 </body>
 </html>

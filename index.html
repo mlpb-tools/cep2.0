@@ -699,7 +699,15 @@
 
             // Mettre à jour les boutons actifs
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            
+            // Trouver et activer le bon bouton
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes('Accueil') && page === 'accueil') btn.classList.add('active');
+                if (btn.textContent.includes('10 Axes') && page === 'axes') btn.classList.add('active');
+                if (btn.textContent.includes('Miroir') && page === 'miroir') btn.classList.add('active');
+                if (btn.textContent.includes('Ressources') && page === 'ressources') btn.classList.add('active');
+            });
 
             switch(page) {
                 case 'accueil':
@@ -781,9 +789,9 @@
                 <div class="grid">
             `;
 
-            axes.forEach(axe => {
+            axes.forEach((axe, index) => {
                 html += `
-                    <div class="axe-card" style="border-left-color: ${axe.color}; color: ${axe.color};" onclick='openModal(${JSON.stringify(axe)})'>
+                    <div class="axe-card" style="border-left-color: ${axe.color}; color: ${axe.color};" onclick="openModalByIndex(${index})">
                         <div class="axe-icon">${axe.icon}</div>
                         <div class="axe-title">${axe.title}</div>
                         <div class="axe-desc" style="color: #666;">${axe.accroche}</div>
@@ -923,6 +931,10 @@
             `;
 
             document.getElementById('mainContent').innerHTML = html;
+        }
+
+        function openModalByIndex(index) {
+            openModal(axes[index]);
         }
 
         function openModal(axe) {

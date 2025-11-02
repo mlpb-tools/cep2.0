@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEP 2.0 - Modèle vivant et territorial</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap');
         
@@ -20,7 +17,6 @@
             font-family: 'Mulish', sans-serif;
             background: linear-gradient(135deg, #f4f4f4 0%, #e8e8e8 100%);
             color: #333;
-            overflow-x: hidden;
         }
         
         :root {
@@ -33,8 +29,6 @@
         
         .container {
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
         
         .nav-header {
@@ -81,8 +75,6 @@
         .progress-bar {
             height: 4px;
             background: #ddd;
-            position: relative;
-            overflow: hidden;
         }
         
         .progress-fill {
@@ -92,11 +84,9 @@
         }
         
         .content {
-            flex: 1;
             padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            width: 100%;
             animation: fadeIn 0.5s ease;
         }
         
@@ -112,7 +102,6 @@
             background: linear-gradient(135deg, var(--orange), var(--rose));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             text-align: center;
         }
         
@@ -183,21 +172,7 @@
             cursor: pointer;
             transition: all 0.3s;
             border-left: 6px solid;
-            position: relative;
-            overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-        
-        .axe-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 80px;
-            height: 80px;
-            background: currentColor;
-            opacity: 0.08;
-            border-radius: 0 12px 0 100%;
         }
         
         .axe-card:hover {
@@ -229,12 +204,15 @@
             right: 0;
             bottom: 0;
             background: rgba(0,0,0,0.75);
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             z-index: 2000;
-            animation: fadeIn 0.3s;
             padding: 1rem;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
         }
         
         .modal-content {
@@ -266,15 +244,10 @@
             height: 40px;
             font-size: 1.8rem;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
             line-height: 1;
         }
         
         .modal-close:hover {
-            transform: rotate(90deg);
             background: #b00942;
         }
         
@@ -295,11 +268,6 @@
         .comparison-cell {
             background: white;
             padding: 1.5rem;
-            transition: all 0.3s;
-        }
-        
-        .comparison-cell:hover {
-            background: #f9f9f9;
         }
         
         .comparison-header {
@@ -324,29 +292,6 @@
             color: white;
             border-radius: 20px;
             margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 10s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
         }
         
         .hero-title {
@@ -358,7 +303,6 @@
         .hero-subtitle {
             font-size: 1.6rem;
             margin-bottom: 2rem;
-            opacity: 0.95;
         }
         
         .hero-icons {
@@ -371,17 +315,6 @@
         
         .hero-icon {
             font-size: 3.5rem;
-            opacity: 0.9;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .hero-icon:nth-child(2) { animation-delay: 0.5s; }
-        .hero-icon:nth-child(3) { animation-delay: 1s; }
-        .hero-icon:nth-child(4) { animation-delay: 1.5s; }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
         }
         
         .hero-buttons {
@@ -461,13 +394,13 @@
             color: #555;
         }
         
+        .hidden {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
             }
             
             .page-title {
@@ -476,15 +409,6 @@
             
             .comparison-row {
                 grid-template-columns: 1fr;
-            }
-            
-            .nav-menu {
-                gap: 0.8rem;
-            }
-            
-            .nav-btn {
-                font-size: 0.85rem;
-                padding: 0.5rem 1rem;
             }
             
             .grid {
@@ -518,563 +442,523 @@
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <div class="container">
+        <nav class="nav-header">
+            <div class="nav-menu">
+                <button class="nav-btn active" onclick="showPage('accueil')">🏠 Accueil</button>
+                <button class="nav-btn" onclick="showPage('axes')">⚙️ Les 10 Axes</button>
+                <button class="nav-btn" onclick="showPage('miroir')">🔄 Miroir CEP</button>
+                <button class="nav-btn" onclick="showPage('ressources')">📚 Ressources</button>
+            </div>
+        </nav>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar" style="width: 25%"></div>
+        </div>
+        
+        <main class="content" id="mainContent">
+            <!-- Le contenu sera injecté ici -->
+        </main>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+        <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+            <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+                <!-- Le contenu du modal sera injecté ici -->
+            </div>
+        </div>
 
-        function App() {
-            const [currentPage, setCurrentPage] = useState('accueil');
-            const [showModal, setShowModal] = useState(false);
-            const [modalContent, setModalContent] = useState(null);
-            const [progress, setProgress] = useState(0);
+        <footer class="footer">
+            <p>&copy; 2025 Mission Locale Pays Basque - CEP 2.0</p>
+            <div class="logo-container">
+                <span class="logo-item">MLPB</span>
+                <span class="logo-item">Pistes Solidaires</span>
+                <span class="logo-item">ICT</span>
+                <span class="logo-item">Eurorégion NAEN</span>
+                <span class="logo-item">FSE+</span>
+                <span class="logo-item">POCTEFA</span>
+                <span class="logo-item">Erasmus+</span>
+            </div>
+        </footer>
+    </div>
 
+    <script>
+        const axes = [
+            {
+                id: 1,
+                title: "Accompagner dans la durée",
+                icon: "⏱️",
+                color: "#f39200",
+                accroche: "Donner du temps, du sens et des espaces d'évolution aux jeunes",
+                objectifs: [
+                    "Réaliser un diagnostic global et itératif fondé sur les besoins réels du jeune",
+                    "Adapter la temporalité de l'accompagnement aux rythmes et transitions de vie",
+                    "Ancrer l'accompagnement dans la durée : suivi post-parcours, lien continu",
+                    "Évaluer la progression par les capabilités : autonomie, confiance, pouvoir d'agir"
+                ],
+                outils: ["Grille Life & Mobility Skills (LS4YOU)", "Portfolio numérique Mahara / LMS MLPB"],
+                exemple: "Baserriberri : suivi long et formation • Je me déplace : mobilité durable"
+            },
+            {
+                id: 2,
+                title: "Posture relationnelle",
+                icon: "💬",
+                color: "#d60b52",
+                accroche: "Construire une relation fondée sur la confiance et la co-construction",
+                objectifs: [
+                    "Développer l'écoute active et la compréhension systémique des situations",
+                    "Intégrer les émotions et la santé mentale dans l'analyse de parcours",
+                    "Co-concevoir les solutions avec les jeunes et les partenaires",
+                    "Cultiver l'attitude réflexive et la coopération plutôt que la prescription"
+                ],
+                outils: ["Méthode des capabilités", "Modules Physical & Mental Fitness (LS4YOU)"],
+                exemple: "Ateliers 'Parole Jeune' • Espaces réflexifs entre pairs conseillers"
+            },
+            {
+                id: 3,
+                title: "Compétences hybrides",
+                icon: "🎓",
+                color: "#95c11f",
+                accroche: "Développer les compétences techniques, sociales et environnementales",
+                objectifs: [
+                    "Relier hard, soft, life et green skills",
+                    "Intégrer les dimensions linguistiques et interculturelles",
+                    "Valoriser les apprentissages informels et expérientiels",
+                    "Promouvoir la reconnaissance ouverte (badges, micro-certifications)"
+                ],
+                outils: ["Badges LS4YOU / PIX / CléA", "MOOCs, podcasts, vidéos interactifs"],
+                exemple: "Take Off Pro : mobilité internationale • PAVAMI 2.0 : formation mixte"
+            },
+            {
+                id: 4,
+                title: "Humain + Digital",
+                icon: "💻",
+                color: "#2897d5",
+                accroche: "Faire du numérique un levier d'autonomie, non un substitut",
+                objectifs: [
+                    "Hybrider accompagnement présentiel et digital : LMS, VR, IA éthique",
+                    "Renforcer l'inclusion numérique et la citoyenneté digitale",
+                    "Intégrer l'expérimentation IA et outils immersifs",
+                    "Créer des environnements d'apprentissage ouverts et collaboratifs"
+                ],
+                outils: ["Plateforme Roaming FSE+ (VR, IA)", "Fablabs et tiers-lieux numériques"],
+                exemple: "Simulations métiers VR Baserriberri • Podcast Jeunes en mouvement"
+            },
+            {
+                id: 5,
+                title: "Droit à l'expérimentation",
+                icon: "🧪",
+                color: "#f39200",
+                accroche: "Tester, innover, apprendre par la pratique",
+                objectifs: [
+                    "Instaurer le droit à l'essai et à l'erreur",
+                    "Mettre les jeunes en posture d'acteurs et de créateurs",
+                    "Favoriser la coopération intergénérationnelle et interculturelle",
+                    "Relier les projets aux enjeux citoyens et environnementaux"
+                ],
+                outils: ["Micro-projets territoriaux", "Learning by doing et accompagnement pairs"],
+                exemple: "Lab Baserriberri : chantier école • Ambassadeurs Jeunes citoyens"
+            },
+            {
+                id: 6,
+                title: "Territoire apprenant",
+                icon: "🌐",
+                color: "#95c11f",
+                accroche: "Relier acteurs, espaces et projets pour un territoire formateur",
+                objectifs: [
+                    "Développer l'expertise jeunesse et la veille territoriale",
+                    "Créer des alliances inter-sectorielles et transfrontalières",
+                    "Favoriser le croisement des disciplines et des compétences",
+                    "Consolider l'ancrage territorial des dispositifs"
+                ],
+                outils: ["Observatoire du Territoire MLPB 2.0", "Plateformes Miro / Basecamp / Lanean"],
+                exemple: "Lanean POCTEFA France/Espagne • Comité Jeunes Territoire"
+            },
+            {
+                id: 7,
+                title: "Évaluation qualitative & Communication",
+                icon: "📊",
+                color: "#2897d5",
+                accroche: "Faire de la donnée un outil d'apprentissage collectif",
+                objectifs: [
+                    "Développer des outils d'évaluation continue et participative",
+                    "Associer les jeunes à la promotion et à l'analyse des projets",
+                    "Diffuser une communication modernisée et partagée",
+                    "Articuler évaluation, valorisation et communication stratégique"
+                ],
+                outils: ["Tableau de bord CEP 2.0 / Sphinx", "Stratégie communication MLPB 2.0"],
+                exemple: "Campagne #jerichocampaign • Baromètre Jeunes Territoire"
+            },
+            {
+                id: 8,
+                title: "Professionnalisation par les capabilités",
+                icon: "🎯",
+                color: "#d60b52",
+                accroche: "Donner aux professionnels les moyens réels d'agir",
+                objectifs: [
+                    "Professionnaliser par la capabilité, non uniquement par les compétences",
+                    "Favoriser l'autonomie, la réflexivité et le pouvoir d'initiative",
+                    "Développer l'apprentissage en situation : co-développement, feedbacks",
+                    "Créer des espaces d'analyse de pratique et de partage entre pairs"
+                ],
+                outils: ["Référentiel de professionnalisation", "Catalogue PAVAMI 2.0 : ADVP, soft skills, IA"],
+                exemple: "Webinaires Regards croisés • Formation CIBC + Roaming"
+            },
+            {
+                id: 9,
+                title: "Innovation continue",
+                icon: "🚀",
+                color: "#f39200",
+                accroche: "Faire de la Mission Locale un laboratoire d'innovation",
+                objectifs: [
+                    "Observer, expérimenter, ajuster : culture du test & learn",
+                    "Développer les projets hybrides et transversaux",
+                    "Intégrer l'éco-responsabilité dans l'orientation et les pratiques",
+                    "Croiser citoyenneté, santé mentale, mobilité, numérique"
+                ],
+                outils: ["Lab CEP 2.0", "Hackathons, serious games, ateliers UX"],
+                exemple: "Serious Game Pro forums emploi • Green Guidance éco-responsable"
+            },
+            {
+                id: 10,
+                title: "Déclinaison locale et ancrage territorial",
+                icon: "🗺️",
+                color: "#95c11f",
+                accroche: "Adapter le CEP 2.0 aux contextes de vie locaux",
+                objectifs: [
+                    "Territorialiser les dispositifs selon les besoins locaux",
+                    "Soutenir la participation citoyenne et les initiatives locales",
+                    "Articuler inter-territorial, transfrontalier et international",
+                    "Développer une culture d'ajustement et d'adaptabilité permanente"
+                ],
+                outils: ["CEP Local Canvas", "Cartographie participative et veille jeunesse"],
+                exemple: "CEP Ruralité : mobilité, emploi agricole • CEP Transfrontalier Lanean"
+            }
+        ];
+
+        const ressources = [
+            {
+                title: "Référentiel CEP 2.0 complet",
+                desc: "Document de référence présentant le modèle, les 10 axes, les outils et méthodes d'accompagnement.",
+                icon: "📘",
+                type: "PDF"
+            },
+            {
+                title: "Fiches déclinaisons locales",
+                desc: "4 fiches détaillant l'adaptation du CEP 2.0 aux zones du Pays Basque.",
+                icon: "🗺️",
+                type: "PDF"
+            },
+            {
+                title: "Kit de formation CIBC",
+                desc: "Module de formation complet pour conseillers : concepts, outils pratiques, mises en situation.",
+                icon: "🎓",
+                type: "ZIP"
+            },
+            {
+                title: "Livret LS4YOU",
+                desc: "Guide des mobilités européennes pour les jeunes et les conseillers.",
+                icon: "🌍",
+                type: "PDF"
+            },
+            {
+                title: "Outils numériques",
+                desc: "Accès à la plateforme PAVAMI, portfolio numérique, ressources VR.",
+                icon: "💻",
+                type: "WEB"
+            },
+            {
+                title: "Grille d'auto-évaluation",
+                desc: "Outil d'évaluation des pratiques sur les 10 axes du CEP 2.0.",
+                icon: "📊",
+                type: "XLSX"
+            },
+            {
+                title: "Guide Green Guidance",
+                desc: "Référentiel d'orientation éco-responsable.",
+                icon: "🌱",
+                type: "PDF"
+            },
+            {
+                title: "Catalogue PAVAMI 2.0",
+                desc: "Catalogue modulaire des formations : ADVP, soft skills, santé mentale, IA, international.",
+                icon: "📚",
+                type: "PDF"
+            },
+            {
+                title: "Templates & Outils pratiques",
+                desc: "Collection d'outils : grilles d'entretien, canvas territorial, tableaux de suivi.",
+                icon: "🛠️",
+                type: "ZIP"
+            }
+        ];
+
+        function showPage(page) {
             const pages = ['accueil', 'axes', 'miroir', 'ressources'];
+            const index = pages.indexOf(page);
+            const progress = ((index + 1) / pages.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
 
-            useEffect(() => {
-                const index = pages.indexOf(currentPage);
-                setProgress(((index + 1) / pages.length) * 100);
-            }, [currentPage]);
+            // Mettre à jour les boutons actifs
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-            const axes = [
-                {
-                    id: 1,
-                    title: "Accompagner dans la durée",
-                    icon: "⏱️",
-                    color: "#f39200",
-                    accroche: "Donner du temps, du sens et des espaces d'évolution aux jeunes",
-                    objectifs: [
-                        "Réaliser un diagnostic global et itératif fondé sur les besoins réels du jeune",
-                        "Adapter la temporalité de l'accompagnement aux rythmes et transitions de vie",
-                        "Ancrer l'accompagnement dans la durée : suivi post-parcours, lien continu",
-                        "Évaluer la progression par les capabilités : autonomie, confiance, pouvoir d'agir"
-                    ],
-                    outils: ["Grille Life & Mobility Skills (LS4YOU)", "Portfolio numérique Mahara / LMS MLPB"],
-                    exemple: "Baserriberri : suivi long et formation • Je me déplace : mobilité durable"
-                },
-                {
-                    id: 2,
-                    title: "Posture relationnelle",
-                    icon: "💬",
-                    color: "#d60b52",
-                    accroche: "Construire une relation fondée sur la confiance et la co-construction",
-                    objectifs: [
-                        "Développer l'écoute active et la compréhension systémique des situations",
-                        "Intégrer les émotions et la santé mentale dans l'analyse de parcours",
-                        "Co-concevoir les solutions avec les jeunes et les partenaires",
-                        "Cultiver l'attitude réflexive et la coopération plutôt que la prescription"
-                    ],
-                    outils: ["Méthode des capabilités", "Modules Physical & Mental Fitness (LS4YOU)"],
-                    exemple: "Ateliers 'Parole Jeune' • Espaces réflexifs entre pairs conseillers"
-                },
-                {
-                    id: 3,
-                    title: "Compétences hybrides",
-                    icon: "🎓",
-                    color: "#95c11f",
-                    accroche: "Développer les compétences techniques, sociales et environnementales",
-                    objectifs: [
-                        "Relier hard, soft, life et green skills",
-                        "Intégrer les dimensions linguistiques et interculturelles",
-                        "Valoriser les apprentissages informels et expérientiels",
-                        "Promouvoir la reconnaissance ouverte (badges, micro-certifications)"
-                    ],
-                    outils: ["Badges LS4YOU / PIX / CléA", "MOOCs, podcasts, vidéos interactives"],
-                    exemple: "Take Off Pro : mobilité internationale • PAVAMI 2.0 : formation mixte"
-                },
-                {
-                    id: 4,
-                    title: "Humain + Digital",
-                    icon: "💻",
-                    color: "#2897d5",
-                    accroche: "Faire du numérique un levier d'autonomie, non un substitut",
-                    objectifs: [
-                        "Hybrider accompagnement présentiel et digital : LMS, VR, IA éthique",
-                        "Renforcer l'inclusion numérique et la citoyenneté digitale",
-                        "Intégrer l'expérimentation IA et outils immersifs",
-                        "Créer des environnements d'apprentissage ouverts et collaboratifs"
-                    ],
-                    outils: ["Plateforme Roaming FSE+ (VR, IA)", "Fablabs et tiers-lieux numériques"],
-                    exemple: "Simulations métiers VR Baserriberri • Podcast 'Jeunes en mouvement'"
-                },
-                {
-                    id: 5,
-                    title: "Droit à l'expérimentation",
-                    icon: "🧪",
-                    color: "#f39200",
-                    accroche: "Tester, innover, apprendre par la pratique",
-                    objectifs: [
-                        "Instaurer le droit à l'essai et à l'erreur",
-                        "Mettre les jeunes en posture d'acteurs et de créateurs",
-                        "Favoriser la coopération intergénérationnelle et interculturelle",
-                        "Relier les projets aux enjeux citoyens et environnementaux"
-                    ],
-                    outils: ["Micro-projets territoriaux", "Learning by doing et accompagnement pairs"],
-                    exemple: "Lab Baserriberri : chantier école • Ambassadeurs Jeunes citoyens"
-                },
-                {
-                    id: 6,
-                    title: "Territoire apprenant",
-                    icon: "🌐",
-                    color: "#95c11f",
-                    accroche: "Relier acteurs, espaces et projets pour un territoire formateur",
-                    objectifs: [
-                        "Développer l'expertise jeunesse et la veille territoriale",
-                        "Créer des alliances inter-sectorielles et transfrontalières",
-                        "Favoriser le croisement des disciplines et des compétences",
-                        "Consolider l'ancrage territorial des dispositifs"
-                    ],
-                    outils: ["Observatoire du Territoire MLPB 2.0", "Plateformes Miro / Basecamp / Lanean"],
-                    exemple: "Lanean POCTEFA France/Espagne • Comité Jeunes Territoire"
-                },
-                {
-                    id: 7,
-                    title: "Évaluation qualitative & Communication",
-                    icon: "📊",
-                    color: "#2897d5",
-                    accroche: "Faire de la donnée un outil d'apprentissage collectif",
-                    objectifs: [
-                        "Développer des outils d'évaluation continue et participative",
-                        "Associer les jeunes à la promotion et à l'analyse des projets",
-                        "Diffuser une communication modernisée et partagée",
-                        "Articuler évaluation, valorisation et communication stratégique"
-                    ],
-                    outils: ["Tableau de bord CEP 2.0 / Sphinx", "Stratégie communication MLPB 2.0"],
-                    exemple: "Campagne #jerichocampaign • Baromètre Jeunes Territoire"
-                },
-                {
-                    id: 8,
-                    title: "Professionnalisation par les capabilités",
-                    icon: "👨‍💼",
-                    color: "#d60b52",
-                    accroche: "Donner aux professionnels les moyens réels d'agir",
-                    objectifs: [
-                        "Professionnaliser par la capabilité, non uniquement par les compétences",
-                        "Favoriser l'autonomie, la réflexivité et le pouvoir d'initiative",
-                        "Développer l'apprentissage en situation : co-développement, feedbacks",
-                        "Créer des espaces d'analyse de pratique et de partage entre pairs"
-                    ],
-                    outils: ["Référentiel de professionnalisation", "Catalogue PAVAMI 2.0 : ADVP, soft skills, IA"],
-                    exemple: "Webinaires 'Regards croisés' • Formation CIBC + Roaming"
-                },
-                {
-                    id: 9,
-                    title: "Innovation continue",
-                    icon: "🚀",
-                    color: "#f39200",
-                    accroche: "Faire de la Mission Locale un laboratoire d'innovation",
-                    objectifs: [
-                        "Observer, expérimenter, ajuster : culture du test & learn",
-                        "Développer les projets hybrides et transversaux",
-                        "Intégrer l'éco-responsabilité dans l'orientation et les pratiques",
-                        "Croiser citoyenneté, santé mentale, mobilité, numérique"
-                    ],
-                    outils: ["Lab CEP 2.0", "Hackathons, serious games, ateliers UX"],
-                    exemple: "Serious Game Pro forums emploi • Green Guidance éco-responsable"
-                },
-                {
-                    id: 10,
-                    title: "Déclinaison locale et ancrage territorial",
-                    icon: "🗺️",
-                    color: "#95c11f",
-                    accroche: "Adapter le CEP 2.0 aux contextes de vie locaux",
-                    objectifs: [
-                        "Territorialiser les dispositifs selon les besoins locaux",
-                        "Soutenir la participation citoyenne et les initiatives locales",
-                        "Articuler inter-territorial, transfrontalier et international",
-                        "Développer une culture d'ajustement et d'adaptabilité permanente"
-                    ],
-                    outils: ["CEP Local Canvas", "Cartographie participative et veille jeunesse"],
-                    exemple: "CEP Ruralité : mobilité, emploi agricole • CEP Transfrontalier Lanean"
-                }
-            ];
-
-            const openModal = (axe) => {
-                setModalContent(axe);
-                setShowModal(true);
-            };
-
-            const closeModal = () => {
-                setShowModal(false);
-                setModalContent(null);
-            };
-
-            const renderPage = () => {
-                switch(currentPage) {
-                    case 'accueil':
-                        return React.createElement(AccueilPage, { setPage: setCurrentPage });
-                    case 'axes':
-                        return React.createElement(AxesPage, { axes: axes, openModal: openModal });
-                    case 'miroir':
-                        return React.createElement(MiroirPage, null);
-                    case 'ressources':
-                        return React.createElement(RessourcesPage, null);
-                    default:
-                        return React.createElement(AccueilPage, { setPage: setCurrentPage });
-                }
-            };
-
-            return (
-                <div className="container">
-                    <nav className="nav-header">
-                        <div className="nav-menu">
-                            <button className={`nav-btn ${currentPage === 'accueil' ? 'active' : ''}`} onClick={() => setCurrentPage('accueil')}>
-                                🏠 Accueil
-                            </button>
-                            <button className={`nav-btn ${currentPage === 'axes' ? 'active' : ''}`} onClick={() => setCurrentPage('axes')}>
-                                ⚙️ Les 10 Axes
-                            </button>
-                            <button className={`nav-btn ${currentPage === 'miroir' ? 'active' : ''}`} onClick={() => setCurrentPage('miroir')}>
-                                🔄 Miroir CEP
-                            </button>
-                            <button className={`nav-btn ${currentPage === 'ressources' ? 'active' : ''}`} onClick={() => setCurrentPage('ressources')}>
-                                📚 Ressources
-                            </button>
-                        </div>
-                    </nav>
-                    
-                    <div className="progress-bar">
-                        <div className="progress-fill" style={{width: `${progress}%`}}></div>
-                    </div>
-                    
-                    <main className="content">
-                        {renderPage()}
-                    </main>
-
-                    {showModal && modalContent && (
-                        <div className="modal-overlay" onClick={closeModal}>
-                            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                                <button className="modal-close" onClick={closeModal}>×</button>
-                                <div style={{borderLeft: `6px solid ${modalContent.color}`, paddingLeft: '2rem'}}>
-                                    <div style={{fontSize: '3.5rem', marginBottom: '1rem'}}>{modalContent.icon}</div>
-                                    <h2 style={{color: modalContent.color, marginBottom: '1rem', fontSize: '1.8rem'}}>{modalContent.title}</h2>
-                                    <p style={{fontSize: '1.3rem', fontStyle: 'italic', color: '#666', marginBottom: '2rem', lineHeight: '1.6'}}>
-                                        "{modalContent.accroche}"
-                                    </p>
-                                    <h3 style={{marginBottom: '1rem', color: '#333', fontSize: '1.3rem'}}>🎯 Objectifs :</h3>
-                                    <ul>
-                                        {modalContent.objectifs.map((obj, i) => <li key={i}>{obj}</li>)}
-                                    </ul>
-                                    <h3 style={{marginTop: '2rem', marginBottom: '1rem', color: '#333', fontSize: '1.3rem'}}>🧰 Outils :</h3>
-                                    <p style={{color: '#555', fontSize: '1.05rem'}}>{modalContent.outils.join(' • ')}</p>
-                                    <div style={{background: '#f4f4f4', padding: '1.5rem', borderRadius: '12px', marginTop: '2rem'}}>
-                                        <h3 style={{marginBottom: '0.8rem', color: modalContent.color, fontSize: '1.2rem'}}>💡 Exemples MLPB :</h3>
-                                        <p style={{color: '#555', fontSize: '1.05rem', lineHeight: '1.6'}}>{modalContent.exemple}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    <footer className="footer">
-                        <p>&copy; 2025 Mission Locale Pays Basque - CEP 2.0</p>
-                        <div className="logo-container">
-                            <span className="logo-item">MLPB</span>
-                            <span className="logo-item">Pistes Solidaires</span>
-                            <span className="logo-item">ICT</span>
-                            <span className="logo-item">Eurorégion NAEN</span>
-                            <span className="logo-item">FSE+</span>
-                            <span className="logo-item">POCTEFA</span>
-                            <span className="logo-item">Erasmus+</span>
-                        </div>
-                    </footer>
-                </div>
-            );
+            switch(page) {
+                case 'accueil':
+                    renderAccueil();
+                    break;
+                case 'axes':
+                    renderAxes();
+                    break;
+                case 'miroir':
+                    renderMiroir();
+                    break;
+                case 'ressources':
+                    renderRessources();
+                    break;
+            }
         }
 
-        function AccueilPage({ setPage }) {
-            return (
-                <div>
-                    <div className="hero">
-                        <div className="hero-content">
-                            <h1 className="hero-title">Conseil en Évolution Professionnelle 2.0</h1>
-                            <p className="hero-subtitle">Modèle vivant et territorial</p>
-                            <div className="hero-icons">
-                                <span className="hero-icon">🎯</span>
-                                <span className="hero-icon">💡</span>
-                                <span className="hero-icon">🌱</span>
-                                <span className="hero-icon">🤝</span>
-                            </div>
-                            <p style={{fontSize: '1.3rem', maxWidth: '850px', margin: '2rem auto', lineHeight: '1.8'}}>
-                                Un modèle agile, capacitant et territorialisé pour accompagner les jeunes d'aujourd'hui
-                            </p>
-                            <div className="hero-buttons">
-                                <button className="btn btn-primary" onClick={() => setPage('axes')}>
-                                    🚀 Découvrir les 10 Axes
-                                </button>
-                                <button className="btn btn-secondary" onClick={() => setPage('miroir')}>
-                                    🔄 Comparer CEP Classique / CEP 2.0
-                                </button>
-                            </div>
-                        </div>
+        function renderAccueil() {
+            document.getElementById('mainContent').innerHTML = `
+                <div class="hero">
+                    <h1 class="hero-title">Conseil en Évolution Professionnelle 2.0</h1>
+                    <p class="hero-subtitle">Modèle vivant et territorial</p>
+                    <div class="hero-icons">
+                        <span class="hero-icon">🎯</span>
+                        <span class="hero-icon">💡</span>
+                        <span class="hero-icon">🌱</span>
+                        <span class="hero-icon">🤝</span>
                     </div>
-
-                    <div className="grid">
-                        <div className="card" style={{borderTop: '5px solid #f39200', cursor: 'pointer'}} onClick={() => setPage('axes')}>
-                            <h3 style={{color: '#f39200', marginBottom: '1rem', fontSize: '1.5rem'}}>⚙️ Les 10 Axes du CEP 2.0</h3>
-                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
-                                Découvrez les 10 dimensions du modèle : accompagnement dans la durée, posture relationnelle, 
-                                compétences hybrides, humain + digital, droit à l'expérimentation et plus encore.
-                            </p>
-                        </div>
-                        <div className="card" style={{borderTop: '5px solid #2897d5', cursor: 'pointer'}} onClick={() => setPage('miroir')}>
-                            <h3 style={{color: '#2897d5', marginBottom: '1rem', fontSize: '1.5rem'}}>🔄 Miroir CEP</h3>
-                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
-                                Comparez le CEP classique et le CEP 2.0 : finalité, posture, temporalité, outils, 
-                                évaluation et gouvernance. Comprenez l'évolution du modèle.
-                            </p>
-                        </div>
-                        <div className="card" style={{borderTop: '5px solid #95c11f', cursor: 'pointer'}} onClick={() => setPage('ressources')}>
-                            <h3 style={{color: '#95c11f', marginBottom: '1rem', fontSize: '1.5rem'}}>📚 Ressources Téléchargeables</h3>
-                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
-                                Accédez aux documents de référence, guides pratiques, outils d'évaluation et 
-                                supports de formation pour mettre en œuvre le CEP 2.0.
-                            </p>
-                        </div>
+                    <p style="font-size: 1.3rem; max-width: 850px; margin: 2rem auto; line-height: 1.8;">
+                        Un modèle agile, capacitant et territorialisé pour accompagner les jeunes d'aujourd'hui
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showPage('axes')">🚀 Découvrir les 10 Axes</button>
+                        <button class="btn btn-secondary" onclick="showPage('miroir')">🔄 Comparer CEP Classique / CEP 2.0</button>
                     </div>
+                </div>
 
-                    <div className="card" style={{background: 'linear-gradient(135deg, #f4f4f4 0%, white 100%)', marginTop: '3rem'}}>
-                        <h2 style={{color: '#f39200', marginBottom: '1.5rem', fontSize: '2rem'}}>Le CEP 2.0 : un modèle vivant</h2>
-                        <p style={{fontSize: '1.15rem', lineHeight: '1.9', marginBottom: '1.5rem'}}>
-                            Le Conseil en Évolution Professionnelle 2.0 représente une transformation profonde de l'accompagnement des jeunes. 
-                            Il ne s'agit plus seulement d'orienter vers l'emploi ou la formation, mais d'accompagner une véritable transformation 
-                            de parcours de vie.
+                <div class="grid">
+                    <div class="card" style="border-top: 5px solid #f39200; cursor: pointer;" onclick="showPage('axes')">
+                        <h3 style="color: #f39200; margin-bottom: 1rem; font-size: 1.5rem;">⚙️ Les 10 Axes du CEP 2.0</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">
+                            Découvrez les 10 dimensions du modèle : accompagnement dans la durée, posture relationnelle, 
+                            compétences hybrides et plus encore.
                         </p>
-                        <p style={{fontSize: '1.15rem', lineHeight: '1.9'}}>
-                            Ce modèle vivant et territorial s'appuie sur <strong>10 axes complémentaires</strong>, alliant innovation numérique, 
-                            évaluation qualitative, territoire apprenant et droit à l'expérimentation. Il place le jeune au centre 
-                            comme acteur de son parcours, avec des conseillers qui deviennent facilitateurs et designers de parcours.
+                    </div>
+                    <div class="card" style="border-top: 5px solid #2897d5; cursor: pointer;" onclick="showPage('miroir')">
+                        <h3 style="color: #2897d5; margin-bottom: 1rem; font-size: 1.5rem;">🔄 Miroir CEP</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">
+                            Comparez le CEP classique et le CEP 2.0 : finalité, posture, temporalité, outils, évaluation.
+                        </p>
+                    </div>
+                    <div class="card" style="border-top: 5px solid #95c11f; cursor: pointer;" onclick="showPage('ressources')">
+                        <h3 style="color: #95c11f; margin-bottom: 1rem; font-size: 1.5rem;">📚 Ressources Téléchargeables</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">
+                            Accédez aux documents de référence, guides pratiques et supports de formation.
                         </p>
                     </div>
                 </div>
-            );
+
+                <div class="card" style="background: linear-gradient(135deg, #f4f4f4 0%, white 100%); margin-top: 3rem;">
+                    <h2 style="color: #f39200; margin-bottom: 1.5rem; font-size: 2rem;">Le CEP 2.0 : un modèle vivant</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.9; margin-bottom: 1.5rem;">
+                        Le Conseil en Évolution Professionnelle 2.0 représente une transformation profonde de l'accompagnement des jeunes. 
+                        Il ne s'agit plus seulement d'orienter vers l'emploi ou la formation, mais d'accompagner une véritable transformation 
+                        de parcours de vie.
+                    </p>
+                    <p style="font-size: 1.15rem; line-height: 1.9;">
+                        Ce modèle vivant et territorial s'appuie sur <strong>10 axes complémentaires</strong>, alliant innovation numérique, 
+                        évaluation qualitative, territoire apprenant et droit à l'expérimentation.
+                    </p>
+                </div>
+            `;
         }
 
-        function AxesPage({ axes, openModal }) {
-            return (
-                <div>
-                    <h1 className="page-title">⚙️ Les 10 Axes du CEP 2.0</h1>
-                    <p className="page-subtitle">Cliquez sur chaque axe pour découvrir les détails</p>
+        function renderAxes() {
+            let html = `
+                <h1 class="page-title">⚙️ Les 10 Axes du CEP 2.0</h1>
+                <p class="page-subtitle">Cliquez sur chaque axe pour découvrir les détails</p>
+                <div class="grid">
+            `;
 
-                    <div className="grid">
-                        {axes.map((axe) => (
-                            <div 
-                                key={axe.id} 
-                                className="axe-card" 
-                                style={{borderLeftColor: axe.color, color: axe.color}}
-                                onClick={() => openModal(axe)}
-                            >
-                                <div className="axe-icon">{axe.icon}</div>
-                                <div className="axe-title">{axe.title}</div>
-                                <div className="axe-desc" style={{color: '#666'}}>
-                                    {axe.accroche}
-                                </div>
-                            </div>
-                        ))}
+            axes.forEach(axe => {
+                html += `
+                    <div class="axe-card" style="border-left-color: ${axe.color}; color: ${axe.color};" onclick='openModal(${JSON.stringify(axe)})'>
+                        <div class="axe-icon">${axe.icon}</div>
+                        <div class="axe-title">${axe.title}</div>
+                        <div class="axe-desc" style="color: #666;">${axe.accroche}</div>
                     </div>
+                `;
+            });
 
-                    <div className="card" style={{marginTop: '3rem', background: 'linear-gradient(135deg, #fff 0%, #f4f4f4 100%)'}}>
-                        <h2 style={{color: '#2897d5', marginBottom: '1.5rem', fontSize: '1.8rem'}}>🎯 Une approche systémique</h2>
-                        <p style={{fontSize: '1.15rem', lineHeight: '1.9'}}>
-                            Ces 10 axes ne fonctionnent pas de manière isolée. Ils forment un écosystème cohérent où 
-                            chaque dimension renforce les autres. L'accompagnement dans la durée permet de développer 
-                            une vraie posture relationnelle. Les compétences hybrides s'appuient sur les outils numériques. 
-                            Le territoire apprenant nourrit l'innovation continue. C'est cette vision systémique qui fait 
-                            la force du CEP 2.0.
+            html += `
+                </div>
+                <div class="card" style="margin-top: 3rem; background: linear-gradient(135deg, #fff 0%, #f4f4f4 100%);">
+                    <h2 style="color: #2897d5; margin-bottom: 1.5rem; font-size: 1.8rem;">🎯 Une approche systémique</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.9;">
+                        Ces 10 axes ne fonctionnent pas de manière isolée. Ils forment un écosystème cohérent où 
+                        chaque dimension renforce les autres. C'est cette vision systémique qui fait la force du CEP 2.0.
+                    </p>
+                </div>
+            `;
+
+            document.getElementById('mainContent').innerHTML = html;
+        }
+
+        function renderMiroir() {
+            document.getElementById('mainContent').innerHTML = `
+                <h1 class="page-title">🔄 Miroir CEP Classique / CEP 2.0</h1>
+                <p class="page-subtitle">Comprendre l'évolution du modèle d'accompagnement</p>
+
+                <div class="card" style="margin-bottom: 3rem;">
+                    <p style="font-size: 1.2rem; color: #666; line-height: 1.8; text-align: center;">
+                        Le CEP 2.0 enrichit et transforme le CEP classique pour répondre aux défis actuels
+                    </p>
+                </div>
+
+                <div class="comparison-table">
+                    <div class="comparison-row">
+                        <div class="comparison-cell comparison-header">Axe</div>
+                        <div class="comparison-cell comparison-header">CEP Classique</div>
+                        <div class="comparison-cell comparison-header">CEP 2.0</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell" style="font-weight: 700; color: #2897d5;">Finalité</div>
+                        <div class="comparison-cell">Orientation emploi-formation</div>
+                        <div class="comparison-cell" style="background: #fff8f0; font-weight: 600;">Transformation de parcours de vie</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell" style="font-weight: 700; color: #2897d5;">Posture</div>
+                        <div class="comparison-cell">Conseiller-expert</div>
+                        <div class="comparison-cell" style="background: #fff8f0; font-weight: 600;">Facilitateur / designer de parcours</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell" style="font-weight: 700; color: #2897d5;">Temporalité</div>
+                        <div class="comparison-cell">Linéaire</div>
+                        <div class="comparison-cell" style="background: #fff8f0; font-weight: 600;">Modulaire, adaptative</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell" style="font-weight: 700; color: #2897d5;">Outils</div>
+                        <div class="comparison-cell">Fiches, référentiels fixes</div>
+                        <div class="comparison-cell" style="background: #fff8f0; font-weight: 600;">UX design, VR, IA, portfolio</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell" style="font-weight: 700; color: #2897d5;">Évaluation</div>
+                        <div class="comparison-cell">Entrée/sortie dispositif</div>
+                        <div class="comparison-cell" style="background: #fff8f0; font-weight: 600;">Impact qualitatif et autonomie</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell" style="font-weight: 700; color: #2897d5;">Gouvernance</div>
+                        <div class="comparison-cell">Processus normatif</div>
+                        <div class="comparison-cell" style="background: #fff8f0; font-weight: 600;">Plan d'amélioration continue</div>
+                    </div>
+                </div>
+
+                <div class="grid" style="margin-top: 3rem;">
+                    <div class="card" style="border-left: 5px solid #f39200;">
+                        <h3 style="color: #f39200; margin-bottom: 1rem;">💡 Exemple : Baserriberri</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">
+                            Accompagnement sur 12 mois avec évaluation qualitative du bien-être et de l'autonomie.
+                        </p>
+                    </div>
+                    <div class="card" style="border-left: 5px solid #95c11f;">
+                        <h3 style="color: #95c11f; margin-bottom: 1rem;">🌍 Exemple : LS4YOU</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">
+                            Mobilité européenne où le jeune est acteur avec portfolio numérique.
+                        </p>
+                    </div>
+                    <div class="card" style="border-left: 5px solid #2897d5;">
+                        <h3 style="color: #2897d5; margin-bottom: 1rem;">🚀 Exemple : Roaming</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7;">
+                            Expérimentation territoriale avec outils numériques (VR, plateforme PAVAMI).
                         </p>
                     </div>
                 </div>
-            );
+            `;
         }
 
-        function MiroirPage() {
-            const comparisons = [
-                { axe: "Finalité", classique: "Orientation emploi-formation", cep2: "Transformation de parcours de vie" },
-                { axe: "Posture", classique: "Conseiller-expert", cep2: "Facilitateur / designer de parcours" },
-                { axe: "Temporalité", classique: "Linéaire", cep2: "Modulaire, adaptative" },
-                { axe: "Outils", classique: "Fiches, référentiels fixes", cep2: "UX design, VR, IA, portfolio" },
-                { axe: "Évaluation", classique: "Entrée/sortie dispositif", cep2: "Impact qualitatif et autonomie" },
-                { axe: "Gouvernance", classique: "Processus normatif", cep2: "Plan d'amélioration continue" }
-            ];
+        function renderRessources() {
+            let html = `
+                <h1 class="page-title">📚 Ressources Téléchargeables</h1>
+                <p class="page-subtitle">Documents, guides et outils pour mettre en œuvre le CEP 2.0</p>
 
-            return (
-                <div>
-                    <h1 className="page-title">🔄 Miroir CEP Classique / CEP 2.0</h1>
-                    <p className="page-subtitle">Comprendre l'évolution du modèle d'accompagnement</p>
+                <div class="card" style="background: linear-gradient(135deg, #95c11f 0%, #2897d5 100%); color: white; margin-bottom: 3rem;">
+                    <h2 style="margin-bottom: 1rem; font-size: 2rem;">📦 Centre de ressources</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.95; line-height: 1.8;">
+                        Retrouvez ici tous les documents de référence, guides pratiques et supports de formation 
+                        pour mettre en œuvre le CEP 2.0.
+                    </p>
+                </div>
 
-                    <div className="card" style={{marginBottom: '3rem'}}>
-                        <p style={{fontSize: '1.2rem', marginBottom: '0', color: '#666', lineHeight: '1.8', textAlign: 'center'}}>
-                            Le CEP 2.0 ne rejette pas le CEP classique, il l'enrichit et le transforme pour répondre 
-                            aux défis actuels : révolution numérique, mutation du travail, enjeux climatiques, 
-                            aspiration à donner du sens.
-                        </p>
+                <div class="grid">
+            `;
+
+            ressources.forEach(ress => {
+                html += `
+                    <div class="ressource-card">
+                        <div class="ressource-icon">${ress.icon}</div>
+                        <h3 class="ressource-title">${ress.title}</h3>
+                        <p class="ressource-desc">${ress.desc}</p>
+                        <div class="ressource-footer">
+                            <span class="ressource-type">${ress.type}</span>
+                            <button class="btn btn-primary" style="padding: 0.6rem 1.5rem; margin: 0;">📥 Télécharger</button>
+                        </div>
                     </div>
+                `;
+            });
 
-                    <div className="comparison-table">
-                        <div className="comparison-row">
-                            <div className="comparison-cell comparison-header">Axe de comparaison</div>
-                            <div className="comparison-cell comparison-header">CEP Classique</div>
-                            <div className="comparison-cell comparison-header">CEP 2.0</div>
-                        </div>
-                        {comparisons.map((comp, i) => (
-                            <div key={i} className="comparison-row">
-                                <div className="comparison-cell" style={{fontWeight: '700', color: '#2897d5', fontSize: '1.05rem'}}>
-                                    {comp.axe}
-                                </div>
-                                <div className="comparison-cell" style={{fontSize: '1.05rem'}}>{comp.classique}</div>
-                                <div className="comparison-cell" style={{background: '#fff8f0', fontSize: '1.05rem', fontWeight: '600'}}>
-                                    {comp.cep2}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="grid" style={{marginTop: '3rem'}}>
-                        <div className="card" style={{borderLeft: '5px solid #f39200'}}>
-                            <h3 style={{color: '#f39200', marginBottom: '1rem', fontSize: '1.3rem'}}>💡 Exemple : Baserriberri</h3>
-                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
-                                Accompagnement sur 12 mois avec immersions longues, évaluation qualitative du bien-être 
-                                et de l'autonomie, et non seulement du placement.
-                            </p>
-                        </div>
-                        <div className="card" style={{borderLeft: '5px solid #95c11f'}}>
-                            <h3 style={{color: '#95c11f', marginBottom: '1rem', fontSize: '1.3rem'}}>🌍 Exemple : LS4YOU</h3>
-                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
-                                Mobilité européenne où le jeune est acteur de son projet, avec usage de portfolio numérique 
-                                et reconnaissance des compétences transversales.
-                            </p>
-                        </div>
-                        <div className="card" style={{borderLeft: '5px solid #2897d5'}}>
-                            <h3 style={{color: '#2897d5', marginBottom: '1rem', fontSize: '1.3rem'}}>🚀 Exemple : Roaming</h3>
-                            <p style={{fontSize: '1.05rem', lineHeight: '1.7'}}>
-                                Expérimentation territoriale transfrontalière, droit à l'erreur, approche modulaire 
-                                avec outils numériques (VR, plateforme PAVAMI).
-                            </p>
-                        </div>
+            html += `
+                </div>
+                <div class="card" style="background: #fff8f0; margin-top: 3rem;">
+                    <h3 style="color: #f39200; margin-bottom: 1.5rem; font-size: 1.6rem;">🔔 Restez informé</h3>
+                    <p style="margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.7;">
+                        Inscrivez-vous à notre newsletter pour recevoir les nouvelles ressources.
+                    </p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <input type="email" placeholder="Votre email" 
+                            style="flex: 1; min-width: 280px; padding: 1rem; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; font-family: Mulish;">
+                        <button class="btn btn-primary" style="margin: 0;">S'inscrire</button>
                     </div>
                 </div>
-            );
+            `;
+
+            document.getElementById('mainContent').innerHTML = html;
         }
 
-        function RessourcesPage() {
-            const ressources = [
-                {
-                    title: "Référentiel CEP 2.0 complet",
-                    desc: "Document de référence présentant le modèle, les 10 axes, les outils et méthodes d'accompagnement. Version complète et détaillée.",
-                    icon: "📘",
-                    type: "PDF"
-                },
-                {
-                    title: "Fiches déclinaisons locales",
-                    desc: "4 fiches détaillant l'adaptation du CEP 2.0 aux zones du Pays Basque : Littoral, Intérieur rural, Montagne, Transfrontalier.",
-                    icon: "🗺️",
-                    type: "PDF"
-                },
-                {
-                    title: "Kit de formation CIBC",
-                    desc: "Module de formation complet pour conseillers : concepts clés, outils pratiques, mises en situation et études de cas.",
-                    icon: "🎓",
-                    type: "ZIP"
-                },
-                {
-                    title: "Livret LS4YOU",
-                    desc: "Guide des mobilités européennes pour les jeunes et les conseillers. Méthodologie, outils et retours d'expérience.",
-                    icon: "🌍",
-                    type: "PDF"
-                },
-                {
-                    title: "Outils numériques",
-                    desc: "Accès à la plateforme PAVAMI, portfolio numérique, ressources VR, supports de formation digitale et tutoriels.",
-                    icon: "💻",
-                    type: "WEB"
-                },
-                {
-                    title: "Grille d'auto-évaluation",
-                    desc: "Outil d'évaluation des pratiques sur les 10 axes du CEP 2.0. Format tableur avec tableau de bord intégré.",
-                    icon: "📊",
-                    type: "XLSX"
-                },
-                {
-                    title: "Guide Green Guidance",
-                    desc: "Référentiel d'orientation éco-responsable. Intégrer les enjeux environnementaux dans l'accompagnement CEP.",
-                    icon: "🌱",
-                    type: "PDF"
-                },
-                {
-                    title: "Catalogue PAVAMI 2.0",
-                    desc: "Catalogue modulaire des formations : ADVP, soft skills, santé mentale, IA, international. Parcours personnalisables.",
-                    icon: "📚",
-                    type: "PDF"
-                },
-                {
-                    title: "Templates & Outils pratiques",
-                    desc: "Collection d'outils : grilles d'entretien, canvas territorial, tableaux de suivi, modèles de reporting.",
-                    icon: "🛠️",
-                    type: "ZIP"
-                }
-            ];
+        function openModal(axe) {
+            const modal = document.getElementById('modalOverlay');
+            let objectifsList = '';
+            axe.objectifs.forEach(obj => {
+                objectifsList += `<li>${obj}</li>`;
+            });
 
-            return (
-                <div>
-                    <h1 className="page-title">📚 Ressources Téléchargeables</h1>
-                    <p className="page-subtitle">Documents, guides et outils pour mettre en œuvre le CEP 2.0</p>
-
-                    <div className="card" style={{background: 'linear-gradient(135deg, #95c11f 0%, #2897d5 100%)', color: 'white', marginBottom: '3rem'}}>
-                        <h2 style={{marginBottom: '1rem', fontSize: '2rem'}}>📦 Centre de ressources</h2>
-                        <p style={{fontSize: '1.2rem', opacity: 0.95, lineHeight: '1.8'}}>
-                            Retrouvez ici tous les documents de référence, guides pratiques, outils d'évaluation 
-                            et supports de formation pour mettre en œuvre le CEP 2.0. Toutes les ressources sont 
-                            accessibles et téléchargeables librement.
-                        </p>
-                    </div>
-
-                    <div className="grid">
-                        {ressources.map((ress, i) => (
-                            <div key={i} className="ressource-card">
-                                <div className="ressource-icon">{ress.icon}</div>
-                                <h3 className="ressource-title">{ress.title}</h3>
-                                <p className="ressource-desc">{ress.desc}</p>
-                                <div className="ressource-footer">
-                                    <span className="ressource-type">{ress.type}</span>
-                                    <button className="btn btn-primary" style={{padding: '0.6rem 1.5rem', margin: 0, fontSize: '0.95rem'}}>
-                                        📥 Télécharger
-                                    </button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="card" style={{background: '#fff8f0', marginTop: '3rem'}}>
-                        <h3 style={{color: '#f39200', marginBottom: '1.5rem', fontSize: '1.6rem'}}>🔔 Restez informé</h3>
-                        <p style={{marginBottom: '1.5rem', fontSize: '1.1rem', lineHeight: '1.7'}}>
-                            Inscrivez-vous à notre newsletter pour recevoir les nouvelles ressources, 
-                            les retours d'expérience et les innovations du Lab CEP 2.0.
-                        </p>
-                        <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
-                            <input 
-                                type="email" 
-                                placeholder="Votre email"
-                                style={{
-                                    flex: 1,
-                                    minWidth: '280px',
-                                    padding: '1rem',
-                                    border: '2px solid #ddd',
-                                    borderRadius: '8px',
-                                    fontSize: '1rem',
-                                    fontFamily: 'Mulish'
-                                }}
-                            />
-                            <button className="btn btn-primary" style={{margin: 0}}>
-                                S'inscrire
-                            </button>
-                        </div>
+            document.getElementById('modalContent').innerHTML = `
+                <button class="modal-close" onclick="closeModal()">×</button>
+                <div style="border-left: 6px solid ${axe.color}; padding-left: 2rem;">
+                    <div style="font-size: 3.5rem; margin-bottom: 1rem;">${axe.icon}</div>
+                    <h2 style="color: ${axe.color}; margin-bottom: 1rem; font-size: 1.8rem;">${axe.title}</h2>
+                    <p style="font-size: 1.3rem; font-style: italic; color: #666; margin-bottom: 2rem; line-height: 1.6;">
+                        "${axe.accroche}"
+                    </p>
+                    <h3 style="margin-bottom: 1rem; color: #333; font-size: 1.3rem;">🎯 Objectifs :</h3>
+                    <ul>${objectifsList}</ul>
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: #333; font-size: 1.3rem;">🧰 Outils :</h3>
+                    <p style="color: #555; font-size: 1.05rem;">${axe.outils.join(' • ')}</p>
+                    <div style="background: #f4f4f4; padding: 1.5rem; border-radius: 12px; margin-top: 2rem;">
+                        <h3 style="margin-bottom: 0.8rem; color: ${axe.color}; font-size: 1.2rem;">💡 Exemples MLPB :</h3>
+                        <p style="color: #555; font-size: 1.05rem; line-height: 1.6;">${axe.exemple}</p>
                     </div>
                 </div>
-            );
+            `;
+            modal.classList.add('active');
         }
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(React.createElement(App));
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        // Initialiser avec la page d'accueil
+        renderAccueil();
     </script>
 </body>
 </html>

@@ -1229,67 +1229,142 @@
                 </div>
             `;
             document.getElementById('mainContent').innerHTML = html;
-        }
+        }function renderTimeline() {
+    document.getElementById('mainContent').innerHTML = `
+        <h1 class="page-title">🕒 Feuille de route 2025 → 2030</h1>
+        <p class="page-subtitle">
+            Le CEP 2.0 devient la colonne vertébrale stratégique de la Mission Locale dans un contexte de baisse de moyens et d'exigence d'efficience.
+        </p>
 
-        function renderTimeline() {
-            document.getElementById('mainContent').innerHTML = `
-                <h1 class="page-title">🕒 Feuille de route 2025 → 2030</h1>
-                <p class="page-subtitle">Le CEP 2.0 est un organisme vivant qui évolue chaque année</p>
+        <div class="timeline">
 
-                <div class="timeline">
-                    <div class="timeline-block">
-                        <div class="timeline-dot" style="background:#f39200;"></div>
-                        <div style="font-size:.75rem;font-weight:700;color:#f39200;text-transform:uppercase;letter-spacing:.05em;">2025</div>
-                        <div style="font-weight:700;color:#333;">Formalisation CEP 2.0</div>
-                        <div style="color:#555;font-size:.95rem;line-height:1.6;">
-                            Référentiel + 10 axes + territorialisation (axe 10)
-                        </div>
-                    </div>
-                    <div class="timeline-block">
-                        <div class="timeline-dot" style="background:#95c11f;"></div>
-                        <div style="font-size:.75rem;font-weight:700;color:#95c11f;text-transform:uppercase;letter-spacing:.05em;">2026</div>
-                        <div style="font-weight:700;color:#333;">Lancement PAVAMI 2.0 & Lab CEP</div>
-                        <div style="color:#555;font-size:.95rem;line-height:1.6;">
-                            Professionnalisation continue / analyse de pratique / expérimentation numérique
-                        </div>
-                    </div>
-                    <div class="timeline-block">
-                        <div class="timeline-dot" style="background:#2897d5;"></div>
-                        <div style="font-size:.75rem;font-weight:700;color:#2897d5;text-transform:uppercase;letter-spacing:.05em;">2027</div>
-                        <div style="font-weight:700;color:#333;">1er Observatoire territorial CEP 2.0</div>
-                        <div style="color:#555;font-size:.95rem;line-height:1.6;">
-                            Tableau de bord d'impact : mobilité, santé mentale, confiance, emploi durable
-                        </div>
-                    </div>
-                    <div class="timeline-block">
-                        <div class="timeline-dot" style="background:#d60b52;"></div>
-                        <div style="font-size:.75rem;font-weight:700;color:#d60b52;text-transform:uppercase;letter-spacing:.05em;">2028</div>
-                        <div style="font-weight:700;color:#333;">Partage inter-réseau</div>
-                        <div style="color:#555;font-size:.95rem;line-height:1.6;">
-                            Diffusion des méthodes MLPB / gouvernance coopérative / articulation transfrontalière Lanean
-                        </div>
-                    </div>
-                    <div class="timeline-block">
-                        <div class="timeline-dot" style="background:#333;"></div>
-                        <div style="font-size:.75rem;font-weight:700;color:#333;text-transform:uppercase;letter-spacing:.05em;">2030</div>
-                        <div style="font-weight:700;color:#333;">CEP 3.0</div>
-                        <div style="color:#555;font-size:.95rem;line-height:1.6;">
-                            Hyper-personnalisation éthique (IA), droit à l’essai reconnu, inclusion totale, orientation éco-responsable.
-                        </div>
-                    </div>
+            <!-- 2025 -->
+            <div class="timeline-block">
+                <div class="timeline-dot" style="background:#f39200;"></div>
+                <div style="font-size:.75rem;font-weight:700;color:#f39200;text-transform:uppercase;letter-spacing:.05em;">2025</div>
+                <div style="font-weight:700;color:#333;">Formalisation CEP 2.0</div>
+                <div style="color:#555;font-size:.95rem;line-height:1.6;">
+                    • Référentiel complet (10 axes) : accompagnement long, santé mentale, mobilité, numérique, expérimentation.<br>
+                    • Axe 10 = territorialisation (littoral saisonnier / rural isolé / montagne / transfrontalier Lanean).<br>
+                    • On pose noir sur blanc : <strong>la Mission Locale ne fait pas que du placement emploi</strong>, elle maintient le socle social du territoire.
                 </div>
-
-                <div class="card" style="margin-top:3rem; background:#fff8f0;">
-                    <h2 style="color:#f39200; font-size:1.4rem; font-weight:700; margin-bottom:1rem;">
-                        Pourquoi cette timeline ?
-                    </h2>
-                    <p style="font-size:1.05rem; line-height:1.7; color:#555;">
-                        La timeline est un outil politique autant qu’un outil pédagogique.  
-                        Elle permet d’installer le CEP 2.0 comme un projet de transformation continue, pas comme une simple “fiche méthode”.
-                    </p>
+                <div style="margin-top:.6rem; font-size:.8rem; line-height:1.4; color:#999;">
+                    Objectif politique 2025 : afficher que MLPB est un service essentiel de cohésion sociale, pas une simple “dépense ajustable”.
                 </div>
-            `;
-        }
+            </div>
+
+            <!-- 2026 -->
+            <div class="timeline-block">
+                <div class="timeline-dot" style="background:#95c11f;"></div>
+                <div style="font-size:.75rem;font-weight:700;color:#95c11f;text-transform:uppercase;letter-spacing:.05em;">2026</div>
+                <div style="font-weight:700;color:#333;">Lancement PAVAMI 2.0 & Lab CEP</div>
+                <div style="color:#555;font-size:.95rem;line-height:1.6;">
+                    • Professionnalisation continue des conseillers : posture relationnelle, analyse de pratique, médiation numérique, ingénierie de parcours/financement.<br>
+                    • Mise en place du <strong>Lab CEP 2.0</strong> : chaque équipe renseigne ses priorités d'amélioration 3 mois, teste des pratiques, documente l'impact.<br>
+                    • On inscrit la santé mentale, la mobilité, l'accès aux droits et la confiance comme <strong>indicateurs d'impact</strong>, pas des “à-côtés”.
+                </div>
+                <div style="margin-top:.6rem; font-size:.8rem; line-height:1.4; color:#999;">
+                    Objectif politique 2026 : prouver que les ETP conseillers = ingénierie territoriale stratégique. Couper des postes = perdre une capacité d’action, pas juste une ligne RH.
+                </div>
+            </div>
+
+            <!-- 2027 -->
+            <div class="timeline-block">
+                <div class="timeline-dot" style="background:#2897d5;"></div>
+                <div style="font-size:.75rem;font-weight:700;color:#2897d5;text-transform:uppercase;letter-spacing:.05em;">2027</div>
+                <div style="font-weight:700;color:#333;">1er Observatoire territorial CEP 2.0</div>
+                <div style="color:#555;font-size:.95rem;line-height:1.6;">
+                    • Création d'un <strong>tableau de bord d'impact territorial</strong> : autonomie, confiance, santé mentale stabilisée, accès aux droits, mobilité réelle, emploi durable.<br>
+                    • Croisement avec les réalités locales (littoral/logement saisonnier, rural/mobilité, montagne/acces soins, transfrontalier Lanean).<br>
+                    • On montre que l’“hétérogénéité territoriale” ≠ “mauvaise efficience”, c’est la preuve qu’on adapte le service public à chaque bassin de vie.
+                </div>
+                <div style="margin-top:.6rem; font-size:.8rem; line-height:1.4; color:#999;">
+                    Objectif politique 2027 : répondre à l'État qui parle d’“efficience” et de “certaines ML qui fonctionnent moins bien”.
+                    Nous apportons une lecture objectivée : le besoin et le contexte expliquent les moyens.
+                </div>
+            </div>
+
+            <!-- 2028 -->
+            <div class="timeline-block">
+                <div class="timeline-dot" style="background:#d60b52;"></div>
+                <div style="font-size:.75rem;font-weight:700;color:#d60b52;text-transform:uppercase;letter-spacing:.05em;">2028</div>
+                <div style="font-weight:700;color:#333;">Partage inter-réseau / Soutenabilité financière</div>
+                <div style="color:#555;font-size:.95rem;line-height:1.6;">
+                    • Diffusion du modèle CEP 2.0 (Posture conseillers + Lab amélioration continue + Observatoire d’impact).<br>
+                    • Intégration renforcée des financements européens (FSE+, POCTEFA, Erasmus+), des coopérations transfrontalières (Lanean), et des tiers-lieux apprenants.<br>
+                    • Construction d'un <strong>argumentaire budgétaire soutenable</strong> : on montre comment la Mission Locale sécurise des ressources hors dotations nationales.
+                </div>
+                <div style="margin-top:.6rem; font-size:.8rem; line-height:1.4; color:#999;">
+                    Objectif politique 2028 : prouver à la Région / Préfet / Europe que MLPB est une plateforme territoriale d’innovation sociale,
+                    pas un guichet isolé. Nous sommes un nœud d’écosystème.
+                </div>
+            </div>
+
+            <!-- 2029 -->
+            <div class="timeline-block">
+                <div class="timeline-dot" style="background:#666;"></div>
+                <div style="font-size:.75rem;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:.05em;">2029</div>
+                <div style="font-weight:700;color:#333;">Reconnaissance comme “structure à haute valeur d’impact social”</div>
+                <div style="color:#555;font-size:.95rem;line-height:1.6;">
+                    • Utiliser les preuves accumulées (impact jeunesse + maillage territorial + soutenabilité financière) pour verrouiller notre position
+                      comme <strong>acteur prioritaire du territoire</strong> auprès des financeurs publics et européens.<br>
+                    • Argument clé : réduire encore les crédits ici reviendrait à saboter une infrastructure locale de cohésion sociale et d’accès aux droits,
+                      ce qui va à l’encontre des alertes formulées au Sénat sur le risque social d’affaiblir les missions locales.
+                </div>
+                <div style="margin-top:.6rem; font-size:.8rem; line-height:1.4; color:#999;">
+                    Objectif politique 2029 : rendre politiquement coûteux toute coupe budgétaire supplémentaire sur la Mission Locale Pays Basque.
+                </div>
+            </div>
+
+            <!-- 2030 -->
+            <div class="timeline-block">
+                <div class="timeline-dot" style="background:#333;"></div>
+                <div style="font-size:.75rem;font-weight:700;color:#333;text-transform:uppercase;letter-spacing:.05em;">2030</div>
+                <div style="font-weight:700;color:#333;">CEP 3.0</div>
+                <div style="color:#555;font-size:.95rem;line-height:1.6;">
+                    • Hyper-personnalisation éthique : IA comme appui à la décision, jamais comme injonction.<br>
+                    • Droit à l’essai / droit au retour inscrit dans la doctrine d’accompagnement (on sort définitivement du “one shot”).<br>
+                    • Orientation éco-responsable intégrée systématiquement (emplois durables, mobilité soutenable).<br>
+                    • Inclusion totale des publics éloignés (isolement géographique, santé mentale fragile, bas niveau numérique).
+                </div>
+                <div style="margin-top:.6rem; font-size:.8rem; line-height:1.4; color:#999;">
+                    Objectif politique 2030 : assumer que la Mission Locale n’est pas un “service annexe de placement vers l’emploi”,
+                    mais une <strong>infrastructure sociale territoriale critique</strong> qui stabilise les parcours de vie des jeunes.
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card" style="margin-top:3rem; background:#fff8f0;">
+            <h2 style="color:#f39200; font-size:1.4rem; font-weight:700; margin-bottom:1rem;">
+                Notre ligne stratégique face aux coupes budgétaires et à la logique d'efficience
+            </h2>
+            <p style="font-size:1.05rem; line-height:1.7; color:#555; margin-bottom:1rem;">
+                1. <strong>On prouve l’impact réel localement</strong> : santé mentale stabilisée, mobilité retrouvée, accès aux droits, insertion durable.
+                Pas juste “combien de CDD en sortie”.
+            </p>
+            <p style="font-size:1.05rem; line-height:1.7; color:#555; margin-bottom:1rem;">
+                2. <strong>On objective les besoins territoriaux</strong> : littoral, rural, montagne, transfrontalier.
+                Donc on démonte l’argument “certaines missions locales sont moins performantes” : nous expliquons le contexte,
+                nous adaptons l’outillage, nous produisons la preuve d’utilité par bassin de vie.
+            </p>
+            <p style="font-size:1.05rem; line-height:1.7; color:#555; margin-bottom:1rem;">
+                3. <strong>On protège nos équipes comme un actif stratégique</strong>.
+                Le CEP 2.0 montre que les conseillers MLPB sont des architectes d’opportunités territoriales,
+                pas juste des opérateurs techniques remplaçables.
+            </p>
+            <p style="font-size:1.05rem; line-height:1.7; color:#555;">
+                4. <strong>On sécurise la soutenabilité</strong> :
+                diversification des ressources (FSE+, POCTEFA, Erasmus+, coopérations transfrontalières Lanean, tiers-lieux apprenants),
+                pour maintenir l’accompagnement des jeunes malgré -20 % de crédits publics en deux ans au niveau national.
+            </p>
+            <p style="font-size:.8rem; color:#999; margin-top:1rem; line-height:1.4;">
+                Conclusion : en 2030, la Mission Locale Pays Basque doit être reconnue comme structure “haute valeur d’impact social”.
+                Nous ne sommes pas un coût à réduire. Nous sommes un amortisseur social territorial dont le retrait produirait de la casse sociale nette.
+            </p>
+        </div>
+    `;
+}
 
         /* ========= MODALE AXE ========= */
 
